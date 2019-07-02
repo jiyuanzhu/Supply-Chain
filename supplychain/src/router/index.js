@@ -24,10 +24,8 @@ export default new Router({
         {
             path: '/',
             name: 'Home',
-            components: {
-                default: Home,
-                top: TopNav
-            }
+            component: Home
+
         },
         {
             path: '/banklogin',
