@@ -37,7 +37,7 @@ export default {
   data(){
     return{
       elback:{
-        backgroundImage: "url(" + require("@/assets/bank.jpg") + ")",
+        backgroundImage: "url(" + require("@/assets/enterprise.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },

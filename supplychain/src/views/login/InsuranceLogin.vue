@@ -5,7 +5,7 @@
     </div>
     <div id="ilbody">
       <div id="ilbody1">
-        <p>银行管理子系统</p>
+        <p>保险管理子系统</p>
       </div>
       <div id="ilbody2">
         <div id="login">
@@ -37,7 +37,7 @@ export default {
   data(){
     return{
       ilback:{
-        backgroundImage: "url(" + require("@/assets/bank.jpg") + ")",
+        backgroundImage: "url(" + require("@/assets/insurance.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },

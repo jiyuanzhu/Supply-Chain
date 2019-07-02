@@ -5,7 +5,7 @@
     </div>
     <div id="tlbody">
       <div id="tlbody1">
-        <p>银行管理子系统</p>
+        <p>运输管理子系统</p>
       </div>
       <div id="tlbody2">
         <div id="login">
@@ -37,7 +37,7 @@ export default {
   data(){
     return{
       tlback:{
-        backgroundImage: "url(" + require("@/assets/bank.jpg") + ")",
+        backgroundImage: "url(" + require("@/assets/trans.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },
