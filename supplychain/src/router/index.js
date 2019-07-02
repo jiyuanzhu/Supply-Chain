@@ -11,6 +11,10 @@ import BankLeftNav from '@/views/nav/leftnav/BankLeftNav'
 import EnterpriseLeftNav from '@/views/nav/leftnav/EnterpriseLeftNav'
 import TransLeftNav from '@/views/nav/leftnav/TransLeftNav'
 import InsuranceLeftNav from '@/views/nav/leftnav/InsuranceLeftNav'
+import Bank from '@/views/Bank'
+import Enterprise from '@/views/Enterprise'
+import Trans from '@/views/Trans'
+import Insurance from '@/views/Insurance'
 
 Vue.use(Router)
 
@@ -30,70 +34,43 @@ export default new Router({
         {
             path: '/banklogin',
             name: 'BankLogin',
-            components: {
-                default: BankLogin,
-                top: TopNav
-            },
-            redirect: '/bank',
-            children: [{
-                path: 'bank',
-                name: 'Bank',
-                components: {
-                    top: TopNav,
-                    left: BankLeftNav
-                }
-            }]
+            component: BankLogin,
+
         },
         {
             path: '/enterpriselogin',
             name: 'EnterpriseLogin',
-            components: {
-                default: EnterpriseLogin,
-                top: TopNav
-            },
-            redirect: '/enterprise',
-            children: [{
-                path: '/enterprise',
-                name: 'Bank',
-                components: {
-                    top: TopNav,
-                    left: EnterpriseLeftNav
-                }
-            }]
+            component: EnterpriseLogin,
         },
         {
-            path: '/',
+            path: '/translogin',
             name: 'TransLogin',
-            components: {
-                default: TransLogin,
-                top: TopNav
-            },
-            redirect: '/trans',
-            children: [{
-                path: '/trans',
-                name: 'Trans',
-                components: {
-                    top: TopNav,
-                    left: TransLeftNav
-                }
-            }]
+            component: TransLogin,
         },
         {
-            path: '/',
+            path: '/insurancelogin',
             name: 'InsuranceLogin',
-            components: {
-                default: InsuranceLogin,
-                top: TopNav
-            },
-            redirect: '/insurance',
-            children: [{
-                path: '/insurance',
-                name: 'Insurance',
-                components: {
-                    top: TopNav,
-                    left: InsuranceLeftNav
-                }
-            }]
+            component: InsuranceLogin,
+        },
+        {
+            path: '/bank',
+            name: 'Bank',
+            component: Bank,
+        },
+        {
+            path: '/enterprise',
+            name: 'Enterprise',
+            component: Enterprise,
+        },
+        {
+            path: '/trans',
+            name: 'Trans',
+            component: Trans,
+        },
+        {
+            path: '/insurance',
+            name: 'Insurance',
+            component: Insurance,
         },
     ]
 })
