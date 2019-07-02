@@ -15,6 +15,7 @@ import Bank from '@/views/Bank'
 import Enterprise from '@/views/Enterprise'
 import Trans from '@/views/Trans'
 import Insurance from '@/views/Insurance'
+import Table from '@/views/table/table'
 
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
             path: '/insurance',
             name: 'Insurance',
             component: Insurance,
+        },
+        {
+            path: '/table',
+            name: 'Table',
+            component: Table,
         },
     ]
 })
