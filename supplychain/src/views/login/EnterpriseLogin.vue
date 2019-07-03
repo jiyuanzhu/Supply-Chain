@@ -46,7 +46,7 @@ export default {
   methods:{
     enterl(){
       this.$store.state.leftNavState = 'Enterpise';
-      this.$router.push({path:'/enterprise'})
+      this.$router.push({path:'/enterpise'})
     }
   }
 }

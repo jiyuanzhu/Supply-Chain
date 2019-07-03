@@ -15,7 +15,7 @@ import Insurance from '@/views/Insurance'
 import MainLayout from '@/views/MainLayout' //定义主要内容布局
 import Content from '@/views/Content.vue'  //父路由显示子路由组件的载体
 import Table from '@/views/table/table'
-
+import NotFound from '@/views/404.vue'
 
 import ContractList from '@/views/table/ContractList'
 import Pending from '@/views/Pending'
@@ -28,6 +28,10 @@ export default new Router({
         //   name: 'HelloWorld',
         //   component: HelloWorld
         // },
+        {
+            path: '*',
+            component: NotFound
+        },
         {
             path: '/',
             name: 'Home',
