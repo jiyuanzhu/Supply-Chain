@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import TopNav from '@/views/nav/TopNav'
+import TopNav from '@/views/nav/TopNavLogin'
 export default {
   name: 'EnterpriseLogin',
   components:{
@@ -45,6 +45,7 @@ export default {
   },
   methods:{
     enterl(){
+      this.$store.state.leftNavState = 'Enterpise';
       this.$router.push({path:'/enterprise'})
     }
   }

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import TopNav from '@/views/nav/TopNav'
+import TopNav from '@/views/nav/TopNavLogin'
 export default {
   name: 'Home',
   components:{

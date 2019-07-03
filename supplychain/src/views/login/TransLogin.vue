@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import TopNav from '@/views/nav/TopNav'
+import TopNav from '@/views/nav/TopNavLogin'
 export default {
   name: 'TransLogin',
   components:{
@@ -45,6 +45,7 @@ export default {
   },
   methods:{
     transl(){
+      this.$store.state.leftNavState = 'Trans';
       this.$router.push({path:'/trans'})
     }
   }
@@ -54,7 +55,7 @@ export default {
 <style>
 .tlback{
   height:690px;
-  width:1500px;
+  width:1600px;
   
 }
 

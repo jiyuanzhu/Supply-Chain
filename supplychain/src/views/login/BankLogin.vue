@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import TopNav from '@/views/nav/TopNav'
+import TopNav from '@/views/nav/TopNavLogin'
 export default {
   name: 'BankLogin',
   components:{
@@ -45,6 +45,7 @@ export default {
   },
   methods:{
     bankl(){
+      this.$store.state.leftNavState = 'Bank';
       this.$router.push({path:'/bank'})
     }
   }
