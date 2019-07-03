@@ -7,7 +7,7 @@
           <a href="/"><img src="@/assets/logo.png" style="padding-left:8px;"></a>
         </div>
         <div class="topbar-logos">
-          <a href="/" style="color: #fff;"><span v-show="!$store.state.collapsed">区块链管理系统</span></a>
+          <a href="/" style="color: #fff; font-family : 华文行楷; font-size: 30px"><span v-show="!$store.state.collapsed">超级供应链管理系统</span></a>
         </div>
         <div class="topbar-title">
           <el-row v-show="$store.state.topNavState==='login'">
@@ -79,15 +79,16 @@
 
   .container .topbar-wrap .topbar-logo {
     float: left;
-    width: 60px;
+    width: 20px;
     line-height: 26px;
   }
 
   .container .topbar-wrap .topbar-logos {
     float: left;
-    width: 128px;
-    line-height: 48px;
+    width: 380px;
+    line-height: 30px;
     font-size: 14px;
+    padding-top:10px;
   }
 
   .container .topbar-wrap .topbar-logo img, .container .topbar-wrap .topbar-logos img {
@@ -117,5 +118,7 @@
     height: 50px;
     line-height: 50px;
     color: #fff;
+    font-family : 华文行楷; 
+    font-size: 20px
   }
 </style>

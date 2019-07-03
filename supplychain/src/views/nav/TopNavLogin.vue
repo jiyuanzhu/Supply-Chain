@@ -13,7 +13,7 @@ export default {
   data(){
     return{
       exitback:{
-        backgroundImage: "url(" + require("@/assets/logo.png") + ")",
+        backgroundImage: "url(" + require("@/assets/exit.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },
@@ -32,13 +32,14 @@ export default {
 #title{
    font-family:"华文行楷";
    font-size:50px;
-   margin-top:0px;
-   padding-top:0px
+   color: black;
+   padding-top:5px;
 }
 
 .exit{
   float:right;
-  margin-right: 3px;
+  margin-right: 10px;
+  margin-top:5px;
   height:40px;
   width:40px;
 }

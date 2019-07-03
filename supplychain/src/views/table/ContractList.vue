@@ -4,8 +4,8 @@
       <div id="表格部分" class="tablewin" @click.capture.once="list=tableData">
         <!-- panel窗体控件 -->
         <div>
-          <div :style="{'background':'#337ab7','height':'30px'}">
-            <h3 :style="{'color':'white'}">合同列表</h3>
+          <div :style="{'background':'  #f2f2f2','height':'40px'}">
+            <h3 :style="{'color':'black'}">合同列表</h3>
           </div>
           <div :style="{'background':'white'}">
             <p :style="{'background':'white'}"></p>

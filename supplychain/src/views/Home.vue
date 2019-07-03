@@ -6,20 +6,16 @@
     <div id="body">
       <div id="body1"></div>
       <div id="body2">
-        <div id="bank">
-          <el-button @click="banklogin" class="banklogin" :style="bankback"></el-button>
+        <div id="bank" v-on:click="banklogin" :style="bankback">
         </div>
-        <div id="enterprise">
-          <el-button @click="enterpriselogin" class="enterpriselogin" :style="enterpriseback"></el-button>
+        <div id="enterprise" v-on:click="enterpriselogin" :style="enterpriseback">
         </div>
       </div>
       <div id="body3"></div>
       <div id="body4">
-        <div id="trans">
-          <el-button @click="translogin" class="translogin" :style="transback"></el-button>
+        <div id="trans" v-on:click="translogin" :style="transback">
         </div>
-        <div id="insurance">
-          <el-button @click="insurancelogin" class="insurancelogin" :style="insuranceback"></el-button>
+        <div id="insurance" v-on:click="insurancelogin" :style="insuranceback">
         </div>
       </div>
     </div>
@@ -36,27 +32,27 @@ export default {
   data(){
     return{
       back:{
-        backgroundImage: "url(" + require("@/assets/logo.png") + ")",
+        backgroundImage: "url(" + require("@/assets/back1.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },
       bankback:{
-        backgroundImage: "url(" + require("@/assets/logo.png") + ")",
+        backgroundImage: "url(" + require("@/assets/banklogo.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },
       enterpriseback:{
-        backgroundImage: "url(" + require("@/assets/logo.png") + ")",
+        backgroundImage: "url(" + require("@/assets/enterpriselogo.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },
       transback:{
-        backgroundImage: "url(" + require("@/assets/logo.png") + ")",
+        backgroundImage: "url(" + require("@/assets/translogo.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },
       insuranceback:{
-        backgroundImage: "url(" + require("@/assets/logo.png") + ")",
+        backgroundImage: "url(" + require("@/assets/insurancelogo.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
       },
@@ -82,98 +78,80 @@ export default {
 <style>
 
 .back{
-  height:690px;
-  width:1500px;
+  height:750px;
+  width:100%;
   
 }
 
 #top{
-  height:80px;
-  width:1500px;
+  height:13%;
+  width:100%;
 }
 
 #body{
-  height:530px;
-  width:1500px;
+  height:87%;
+  width:100%;
   text-align:center;
 }
 
 #body1{
-  height:40px;
-  width:700px;
+  height:7%;
+  width:50%;
   margin:auto;
 }
 
 #body2{
-  height:210px;
-  width:750px;
+  height:35%;
+  width:50%;
   margin:auto;
 }
 
 #body3{
-  height:40px;
-  width:700px;
+  height:10%;
+  width:50%;
   margin:auto;
 }
 
 #body4{
-  height:210px;
-  width:750px;
+  height:35%;
+  width:50%;
   margin:auto;
 }
 
 #bank{
-  height:210px;
-  width:350px;
+  height:100%;
+  width:46%;
   float:left;
   background-color: rgb(226, 68, 29);
+  border:1px solid white;
+  border-radius:10px;
 }
 
 #enterprise{
-  height:210px;
-  width:350px;
+  height:100%;
+  width:46%;
   float:right;
   background-color: rgb(197, 236, 19);
+  border:1px solid white;
+  border-radius:10px;
 }
 
 #trans{
-  height:210px;
-  width:350px;
+  height:100%;
+  width:46%;
   float:left;
   background-color: rgb(8, 255, 37);
+  border:1px solid white;
+  border-radius:10px;
 }
 
 #insurance{
-  height:210px;
-  width:350px;
+  height:100%;
+  width:46%;
   float:right;
   background-color: rgb(197, 31, 169);
+  border:1px solid white;
+  border-radius:10px;
 }
 
-.banklogin{
-  height:210px;
-  width:350px;
-  float:left;
-  background-color: rgb(226, 68, 29);
-}
-.enterpriselogin{
-  height:210px;
-  width:350px;
-  float:right;
-  background-color: rgb(197, 236, 19);
-}
-
-.translogin{
-  height:210px;
-  width:350px;
-  float:left;
-  background-color: rgb(8, 255, 37);
-}
-
-.insurancelogin{
-  height:210px;
-  width:350px;
-  float:right;
-  background-color: rgb(197, 31, 169);
-}
 </style>

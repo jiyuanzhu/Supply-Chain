@@ -54,26 +54,26 @@ export default {
 
 <style>
 .tlback{
-  height:690px;
-  width:1600px;
+  height:750px;
+  width:100%;
   
 }
 
 #tltop{
-  height:80px;
-  width:1500px;
+  height:13%;
+  width:100%;
 }
 
 #tlbody{
-  height:600px;
-  width:1500px;
+  height:87%;
+  width:100%;
   text-align: center;
 }
 
 #tlbody1{
   margin:auto;
-  height:70px;
-  width:700px;
+  height:12%;
+  width:46%;
   font-family:"华文行楷"; 
   font-size:30px;
   text-align: center;
@@ -81,13 +81,13 @@ export default {
 
 #tlbody2{
   margin:auto;
-  height:440px;
-  width:400px;
+  height:73%;
+  width:27%;
 }
 
 #login{
-  height:440px;
-  width:400px;
+  height:100%;
+  width:100%;
   background-color: rgb(252, 247, 252);
   border-radius:30px;
   box-shadow: 1px #383737;
@@ -95,8 +95,8 @@ export default {
 }
 
 #logintitle{
-  height:100px;
-  width:400px;
+  height:23%;
+  width:100%;
   text-align: center;
   font-family:"华文行楷"; 
   font-size:30px;
@@ -105,8 +105,8 @@ export default {
 
 #username{
   margin:auto;
-  height:80px;
-  width:250px;
+  height:18%;
+  width:62%;
   text-align: left;
   font-family:"华文行楷"; 
   font-size:20px;
@@ -114,8 +114,8 @@ export default {
 
 #password{
   margin:auto;
-  height:80px;
-  width:250px;
+  height:18%;
+  width:62%;
   text-align: left;
   font-family:"华文行楷"; 
   font-size:20px;
