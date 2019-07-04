@@ -18,6 +18,8 @@ import Table from '@/views/table/table'
 import NotFound from '@/views/404.vue'
 
 import ContractList from '@/views/table/ContractList'
+import LogisticsList from '@/views/table/LogisticsList'
+
 import Pending from '@/views/Pending'
 Vue.use(Router)
 
@@ -93,7 +95,7 @@ export default new Router({
             },
             iconCls: 'el-icon-menu',
             children:[
-              {path:'/enterpise/logistics/list',name:'订单列表',component:Pending, menuShow: true },
+              {path:'/enterpise/logistics/list',name:'订单列表',component:LogisticsList, menuShow: true },
               {path:'/enterpise/logistics/signed',name:'确认订单',component:Pending, menuShow: true },
               {path:'/enterpise/logistics/confirm',name:'确认货物',component:Pending, menuShow: true },
             ]
