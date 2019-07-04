@@ -64,7 +64,7 @@
         </label>
       </div>
     </div>
-    <el-table :data="tableData" border height="495" :style="{'width':'100%'}"  @cell-click="detail">
+    <el-table :data="tableData" border height="520" :style="{'width':'100%'}"  @cell-click="detail">
       <el-table-column prop="id" label="订单编号" width="100" align="center"></el-table-column>
       <el-table-column prop="name" label="物流公司" width="160" align="center"></el-table-column>
       <el-table-column prop="partA" label="寄货方" width="160" align="center"></el-table-column>
@@ -88,7 +88,11 @@ export default {
           partB: "学生",
           ctime: new Date(),
           strtime: "",
-          orderState: "待收货"
+          orderState: "待收货",
+          orderState: "", //订单状态
+          goods: "apple*2,banana*3", //运输物品
+          orderTracking: "", //订单追踪
+          tokenCost:"", //物流费用
         },
         {
           id: "2",
@@ -124,7 +128,7 @@ export default {
           partB: "学生",
           ctime: new Date(),
           strtime: "",
-          orderState: "待收货"
+          orderState: "已送达"
         },
         {
           id: "6",
@@ -178,7 +182,7 @@ export default {
           partB: "老师",
           ctime: new Date(),
           strtime: "",
-          orderState: "待收货"
+          orderState: "已送达"
         },
         {
           id: "12",
@@ -196,13 +200,17 @@ export default {
       partA: "",
       partB: "",
       ctime: "",
+      orderState: "", //订单状态
+      goods: "", //运输物品
+      orderTracking: "", //订单追踪
+      tokenCost:"", //物流费用
+
       idKey: "",
       nameKey: "",
       partAKey: "",
       partBKey: "",
-      strtimeKey: "",
-      orderState: "",
-      orderStateKey: ""
+      strtimeKey: "", //日期字符串
+      orderStateKey: ""  //订单状态关键字搜索
     };
   },
   methods: {

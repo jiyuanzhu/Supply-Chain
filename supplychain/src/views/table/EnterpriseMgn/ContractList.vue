@@ -1,35 +1,61 @@
 <template>
   <div id="表格部分" class="tablewin">
     <div>
-      <div :style="{'background':'#f2f2f2','height':'40px','padding-top':'10px','padding-bottom':'5px'}">
-        
+      <div
+        :style="{'background':'#f2f2f2','height':'40px','padding-top':'10px','padding-bottom':'5px'}"
+      >
         <h3 :style="{'color':'black'}">合同列表</h3>
       </div>
       <div :style="{'background':'white','padding-top':'20px','padding-bottom':'20px'}">
         <label :style="{'display':'inline'}">
           <div :style="{'display':'inline'}">Id：</div>
-          <el-input v-model="idKey" clearable :style="{'width':'30%'}" @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"></el-input>
+          <el-input
+            v-model="idKey"
+            clearable
+            :style="{'width':'30%'}"
+            @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"
+          ></el-input>
         </label>
         <label :style="{'display':'inline'}">
           <div :style="{'display':'inline'}">合同名称：</div>
-          <el-input v-model="nameKey" clearable :style="{'width':'30%'}" @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"></el-input>
+          <el-input
+            v-model="nameKey"
+            clearable
+            :style="{'width':'30%'}"
+            @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"
+          ></el-input>
         </label>
-        <p style="margin-top:20px"> </p>
+        <p style="margin-top:20px"></p>
         <label>
           <div :style="{'display':'inline'}">甲方：</div>
-          <el-input v-model="partAKey" clearable :style="{'width':'20%'}" @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"></el-input>
+          <el-input
+            v-model="partAKey"
+            clearable
+            :style="{'width':'20%'}"
+            @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"
+          ></el-input>
         </label>
         <label :style="{'display':'inline'}">
           <div :style="{'display':'inline'}">乙方：</div>
-          <el-input v-model="partBKey" clearable :style="{'width':'20%'}" @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"></el-input>
+          <el-input
+            v-model="partBKey"
+            clearable
+            :style="{'width':'20%'}"
+            @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"
+          ></el-input>
         </label>
         <label :style="{'display':'inline'}">
           <div :style="{'display':'inline'}">添加时间：</div>
-          <el-input v-model="strtimeKey" clearable :style="{'width':'20%'}" @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"></el-input>
+          <el-input
+            v-model="strtimeKey"
+            clearable
+            :style="{'width':'20%'}"
+            @change="search(idKey,nameKey,partAKey,partBKey,strtimeKey)"
+          ></el-input>
         </label>
       </div>
     </div>
-    <el-table :data="tableData" border height="495" style="width: 100%" @cell-click="detail">
+    <el-table :data="tableData" border height="520" style="width: 100%" @cell-click="detail">
       <el-table-column prop="id" label="Id" width="50" align="center"></el-table-column>
       <el-table-column prop="name" label="合同名称" width="160" align="center"></el-table-column>
       <el-table-column prop="partA" label="甲方" width="160" align="center"></el-table-column>
@@ -51,7 +77,8 @@ export default {
           partA: "老师",
           partB: "学生",
           ctime: new Date(),
-          strtime:""
+          strtime: "",
+          contractTXT: null
         },
         {
           id: "2",
@@ -59,7 +86,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "3",
@@ -67,7 +94,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "4",
@@ -75,7 +102,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "5",
@@ -83,7 +110,7 @@ export default {
           partA: "老师",
           partB: "学生",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "6",
@@ -91,7 +118,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "7",
@@ -99,7 +126,7 @@ export default {
           partA: "老师",
           partB: "学生",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "8",
@@ -107,7 +134,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "9",
@@ -115,7 +142,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "10",
@@ -123,7 +150,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "11",
@@ -131,7 +158,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         },
         {
           id: "12",
@@ -139,7 +166,7 @@ export default {
           partA: "学生",
           partB: "老师",
           ctime: new Date(),
-          strtime:""
+          strtime: ""
         }
       ],
       tableData: [],
@@ -148,6 +175,7 @@ export default {
       partA: "",
       partB: "",
       ctime: "",
+      contractTXT: null,
       idKey: "",
       nameKey: "",
       partAKey: "",
@@ -169,35 +197,36 @@ export default {
           this.tableData.push(item);
       });
     },
-    detail(item){
-      
-    
+    // 查看合同文件
+    detail(item) {
+
     },
-    init(){
+    init() {
       for (let index = 0; index < this.list.length; index++) {
-        const element = this.list[index]
-        var dt=element.ctime
-        var y=dt.getFullYear()
-        var m=dt.getMonth()
-        var d=dt.getDate()
-        var hh=dt.getHours()
-        var mm=dt.getMinutes()
-        var ss=dt.getSeconds()
-        this.list[index].strtime=y+'-'+m+'-'+d+' '+hh+':'+mm+':'+ss
-        
+        const element = this.list[index];
+        var dt = element.ctime;
+        var y = dt.getFullYear();
+        var m = dt.getMonth();
+        var d = dt.getDate();
+        var hh = dt.getHours();
+        var mm = dt.getMinutes();
+        var ss = dt.getSeconds();
+        this.list[index].strtime =
+          y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
       }
-      this.tableData=this.list
+      this.tableData = this.list;
     }
   },
-  mounted(){
-    {this.init()}
+  mounted() {
+    {
+      this.init();
+    }
   }
 };
-
 </script>
 
 <style>
 .tablewin {
-  background-color:lightblue;
+  background-color: lightblue;
 }
 </style>

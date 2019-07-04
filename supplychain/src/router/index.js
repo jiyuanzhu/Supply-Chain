@@ -18,8 +18,11 @@ import Content from '@/views/Content.vue' //父路由显示子路由组件的载
 import Table from '@/views/table/table'
 import NotFound from '@/views/404.vue'
 
-import ContractList from '@/views/table/ContractList'
-import LogisticsList from '@/views/table/LogisticsList'
+import ContractList from '@/views/table/EnterpriseMgn/ContractList'
+import ContractSign from '@/views/table/EnterpriseMgn/ContractSign'
+import LogisticsList from '@/views/table/EnterpriseMgn/LogisticsList'
+import LogisticsOrderSign from '@/views/table/EnterpriseMgn/LogisticsOrderSign'
+
 
 import Pending from '@/views/Pending'
 Vue.use(Router)
@@ -86,7 +89,7 @@ export default new Router({
                     iconCls: 'el-icon-menu',
                     children: [
                         { path: '/enterpise/contract/list', name: '合同列表', component: ContractList, menuShow: true },
-                        { path: '/enterpise/contract/signed', name: '签署合同', component: Pending, menuShow: true },
+                        { path: '/enterpise/contract/signed', name: '签署合同', component: ContractSign, menuShow: true },
                     ]
                 },
                 {
@@ -101,7 +104,7 @@ export default new Router({
                     iconCls: 'el-icon-menu',
                     children: [
                         { path: '/enterpise/logistics/list', name: '订单列表', component: LogisticsList, menuShow: true },
-                        { path: '/enterpise/logistics/signed', name: '确认订单', component: Pending, menuShow: true },
+                        { path: '/enterpise/logistics/signed', name: '确认订单', component: LogisticsOrderSign, menuShow: true },
                         { path: '/enterpise/logistics/confirm', name: '确认货物', component: Pending, menuShow: true },
                     ]
                 },
