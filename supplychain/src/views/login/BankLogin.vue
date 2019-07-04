@@ -13,14 +13,17 @@
             <p>登录</p>
           </div>
           <div id="username">
-            <p class="usertext">用户名</p>
-            <el-input type="text" class="userinput"></el-input>
+            <p>用户名</p>
+            <el-input type="text"></el-input>
           </div>
           <div id="password">
-            <p class="passtext">密码</p>
-            <el-input type="text" class="passinput"></el-input>
+            <p>密码</p>
+            <el-input type="text"></el-input>
           </div>
-          <el-button @click="bankl" class="bankl">登录</el-button>
+          <div class="doubut">
+            <el-button @click="bankl" class="bankl">登录</el-button>
+            <el-button @click="register" class="register">注册</el-button>
+          </div>
         </div>
       </div>
     </div>
@@ -47,6 +50,9 @@ export default {
     bankl(){
       this.$store.state.leftNavState = 'Bank';
       this.$router.push({path:'/bank'})
+    },
+    register(){
+      this.$router.push({path:'/register'})
     }
   }
 }
@@ -121,6 +127,12 @@ export default {
   font-size:20px;
 }
 
+
+.doubut{
+  height:20%;
+  width:60%;
+  margin:auto;  
+}
 .bankl{
   background-color: rgb(17, 212, 226);
   width:100px;
@@ -129,5 +141,17 @@ export default {
   font-family:"华文行楷"; 
   font-size:25px;
   text-align: center;
+  float:left;
+}
+
+.register{
+  background-color: rgb(17, 212, 226);
+  width:100px;
+  height:45px;
+  margin-top: 50px;
+  font-family:"华文行楷"; 
+  font-size:25px;
+  text-align: center;
+  float:right;
 }
 </style>
