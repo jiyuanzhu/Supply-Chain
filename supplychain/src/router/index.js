@@ -22,6 +22,13 @@ import ContractList from '@/views/table/EnterpriseMgn/ContractList'
 import ContractSign from '@/views/table/EnterpriseMgn/ContractSign'
 import LogisticsList from '@/views/table/EnterpriseMgn/LogisticsList'
 import LogisticsOrderSign from '@/views/table/EnterpriseMgn/LogisticsOrderSign'
+import LogisticsCertain from '@/views/table/EnterpriseMgn/LogisticsCertain'
+import TokenPay from '@/views/table/EnterpriseMgn/TokenPay'
+import TokenExchange from '@/views/table/EnterpriseMgn/TokenExchange'
+import TokenValue from '@/views/table/EnterpriseMgn/TokenValue'
+import InsuranceBuy from '@/views/table/EnterpriseMgn/InsuranceBuy'
+import InsuranceList from '@/views/table/EnterpriseMgn/InsuranceList'
+
 
 
 import Pending from '@/views/Pending'
@@ -105,7 +112,7 @@ export default new Router({
                     children: [
                         { path: '/enterpise/logistics/list', name: '订单列表', component: LogisticsList, menuShow: true },
                         { path: '/enterpise/logistics/signed', name: '确认订单', component: LogisticsOrderSign, menuShow: true },
-                        { path: '/enterpise/logistics/confirm', name: '确认货物', component: Pending, menuShow: true },
+                        { path: '/enterpise/logistics/confirm', name: '确认货物', component: LogisticsCertain, menuShow: true },
                     ]
                 },
                 {
@@ -119,9 +126,9 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/enterpise/token/pay', name: 'Token支付', component: Pending, menuShow: true },
-                        { path: '/enterpise/token/exchange', name: 'Token兑换', component: Pending, menuShow: true },
-                        { path: '/enterpise/token/lines', name: 'Token额度', component: Pending, menuShow: true },
+                        { path: '/enterpise/token/pay', name: 'Token支付', component: TokenPay, menuShow: true },
+                        { path: '/enterpise/token/exchange', name: 'Token兑换', component: TokenExchange, menuShow: true },
+                        { path: '/enterpise/token/lines', name: 'Token额度', component: TokenValue, menuShow: true },
                     ]
                 },
                 {
@@ -135,8 +142,8 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/enterpise/policy/buy', name: '保单购买', component: Pending, menuShow: true },
-                        { path: '/enterpise/policy/list', name: '保单列表', component: Pending, menuShow: true },
+                        { path: '/enterpise/policy/buy', name: '保单购买', component: InsuranceBuy, menuShow: true },
+                        { path: '/enterpise/policy/list', name: '保单列表', component: InsuranceList, menuShow: true },
                     ]
                 },
             ]
