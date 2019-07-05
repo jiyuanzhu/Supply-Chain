@@ -20,14 +20,14 @@ import NotFound from '@/views/404.vue'
 
 import ContractList from '@/views/table/EnterpriseMgn/ContractList'
 import ContractSign from '@/views/table/EnterpriseMgn/ContractSign'
-import LogisticsList from '@/views/table/EnterpriseMgn/LogisticsList'
+import LogisticsList from '@/views/table/LogisticsList'
 import LogisticsOrderSign from '@/views/table/EnterpriseMgn/LogisticsOrderSign'
-import LogisticsCertain from '@/views/table/EnterpriseMgn/LogisticsCertain'
-import TokenPay from '@/views/table/EnterpriseMgn/TokenPay'
-import TokenExchange from '@/views/table/EnterpriseMgn/TokenExchange'
-import TokenValue from '@/views/table/EnterpriseMgn/TokenValue'
-import InsuranceBuy from '@/views/table/EnterpriseMgn/InsuranceBuy'
-import InsuranceList from '@/views/table/EnterpriseMgn/InsuranceList'
+import LogisticsGoodsCertain from '@/views/table/EnterpriseMgn/LogisticsGoodsCertain'
+import TokenPay from '@/views/table/TokenPay'
+import TokenExchange from '@/views/table/TokenExchange'
+import TokenValue from '@/views/table/TokenValue'
+import InsuranceBuy from '@/views/table/InsuranceBuy'
+import InsuranceList from '@/views/table/InsuranceList'
 
 
 
@@ -112,7 +112,7 @@ export default new Router({
                     children: [
                         { path: '/enterpise/logistics/list', name: '订单列表', component: LogisticsList, menuShow: true },
                         { path: '/enterpise/logistics/signed', name: '确认订单', component: LogisticsOrderSign, menuShow: true },
-                        { path: '/enterpise/logistics/confirm', name: '确认货物', component: LogisticsCertain, menuShow: true },
+                        { path: '/enterpise/logistics/confirm', name: '确认货物', component: LogisticsGoodsCertain, menuShow: true },
                     ]
                 },
                 {
@@ -201,7 +201,7 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/insurance/policy/list', name: '保单列表', component: Pending, menuShow: true }
+                        { path: '/insurance/policy/list', name: '保单列表', component: InsuranceList, menuShow: true }
                     ]
                 },
                 {
@@ -215,8 +215,8 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/insurance/token/exchange', name: 'Token兑换', component: Pending, menuShow: true },
-                        { path: '/insurance/token/lines', name: 'Token额度', component: Pending, menuShow: true },
+                        { path: '/insurance/token/exchange', name: 'Token兑换', component: TokenExchange, menuShow: true },
+                        { path: '/insurance/token/lines', name: 'Token额度', component: TokenValue, menuShow: true },
                     ]
                 }
             ]
@@ -238,7 +238,7 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/trans/transport/manage', name: '管理运输', component: Pending, menuShow: true },
+                        { path: '/trans/transport/manage', name: '管理运输', component: LogisticsList, menuShow: true },
                         { path: '/trans/transport/send', name: '发出货物', component: Pending, menuShow: true },
                         { path: '/trans/transport/done', name: '送达货物', component: Pending, menuShow: true },
                     ]
@@ -254,9 +254,9 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/trans/token/exchange', name: 'Token兑换', component: Pending, menuShow: true },
-                        { path: '/trans/token/pay', name: 'Token支付', component: Pending, menuShow: true },
-                        { path: '/trans/token/lines', name: 'Token额度', component: Pending, menuShow: true },
+                        { path: '/trans/token/exchange', name: 'Token兑换', component: TokenExchange, menuShow: true },
+                        { path: '/trans/token/pay', name: 'Token支付', component: TokenPay, menuShow: true },
+                        { path: '/trans/token/lines', name: 'Token额度', component: TokenValue, menuShow: true },
                     ]
                 },
                 {
@@ -270,8 +270,8 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/trans/policy/buy', name: '保单购买', component: Pending, menuShow: true },
-                        { path: '/trans/policy/list', name: '保单列表', component: Pending, menuShow: true },
+                        { path: '/trans/policy/buy', name: '保单购买', component: InsuranceBuy, menuShow: true },
+                        { path: '/trans/policy/list', name: '保单列表', component: InsuranceList, menuShow: true },
                     ]
                 },
 

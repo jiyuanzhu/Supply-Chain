@@ -53,6 +53,7 @@ export default {
                 if(item.id==this.id)
                 return true 
             })
+            if(this.list.length==0) randomid=false 
         }while(randomid)
         this.ctime=new Date()
         this.list.push({id:this.id,name:this.name,partA:this.partA,partB:this.partB,ctime:this.ctime})
