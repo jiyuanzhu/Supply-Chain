@@ -49,6 +49,7 @@ export default {
         var randomid=false
         do{
             this.id=Math.floor(Math.random()*(1000-1))+1;
+            this.id = this.id.toString()
             randomid=this.list.every((item)=>{
                 if(item.id==this.id)
                 return true 

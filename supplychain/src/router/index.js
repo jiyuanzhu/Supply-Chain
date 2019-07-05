@@ -28,8 +28,10 @@ import TokenExchange from '@/views/table/TokenExchange'
 import TokenValue from '@/views/table/TokenValue'
 import InsuranceBuy from '@/views/table/InsuranceBuy'
 import InsuranceList from '@/views/table/InsuranceList'
-
-
+import DeliveryGoods from '@/views/table/Logistics/DeliveryGoods'
+import AchieveSending from '@/views/table/Logistics/AchieveSending'
+import BankCredit from '@/views/table/Bank/BankCredit'
+import CashingList from '@/views/table/Bank/CashingList'
 
 import Pending from '@/views/Pending'
 Vue.use(Router)
@@ -165,7 +167,7 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/bank/creditManage/credit', name: '银行授信', component: Pending, menuShow: true }
+                        { path: '/bank/creditManage/credit', name: '银行授信', component: BankCredit, menuShow: true }
                     ]
                 },
                 {
@@ -179,7 +181,7 @@ export default new Router({
                     },
                     iconCls: 'el-icon-menu',
                     children: [
-                        { path: '/bank/token/exchange', name: 'Token支付', component: Pending, menuShow: true }
+                        { path: '/bank/token/exchange', name: 'Token待兑现表', component: CashingList, menuShow: true }
                     ]
                 }
             ]
@@ -239,8 +241,8 @@ export default new Router({
                     iconCls: 'el-icon-menu',
                     children: [
                         { path: '/trans/transport/manage', name: '管理运输', component: LogisticsList, menuShow: true },
-                        { path: '/trans/transport/send', name: '发出货物', component: Pending, menuShow: true },
-                        { path: '/trans/transport/done', name: '送达货物', component: Pending, menuShow: true },
+                        { path: '/trans/transport/send', name: '发出货物', component: DeliveryGoods, menuShow: true },
+                        { path: '/trans/transport/done', name: '送达货物', component: AchieveSending, menuShow: true },
                     ]
                 },
                 {
