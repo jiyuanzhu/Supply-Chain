@@ -98,7 +98,8 @@ export default new Router({
                     iconCls: 'el-icon-menu',
                     children: [
                         { path: '/enterpise/contract/list', name: '合同列表', component: ContractList, menuShow: true },
-                        { path: '/enterpise/contract/signed', name: '签署合同', component: ContractSign, menuShow: true },
+                        { path: '/enterpise/contract/signedA', name: '签署合同', component: ContractSign, menuShow: true },
+                        { path: '/enterpise/contract/signedB', name: '合同确认', component: ContractList, menuShow: true },
                     ]
                 },
                 {
@@ -280,6 +281,45 @@ export default new Router({
             ]
 
         },
+      {
+        path: '/centerpise',
+        component: MainLayout,
+        name: 'CoreEnterpise',
+        menuShow: true,
+        redirect: '/centerpise/contract/list',
+        children: [{
+          path: '/centerpise/contract',
+          name: '合同管理',
+          menuShow: true,
+          components: {
+            top: TopNav,
+            aside: LeftNav,
+            default: Content
+          },
+          iconCls: 'el-icon-menu',
+          children: [
+            { path: '/centerpise/contract/list', name: '合同列表', component: ContractList, menuShow: true },
+            { path: '/centerpise/contract/signed', name: '签署合同', component: ContractSign, menuShow: true },
+            { path: '/centerpise/contract/signedB', name: '合同确认', component: ContractList, menuShow: true },
+          ]
+        },
+          {
+            path: '/centerpise/token',
+            name: 'Token管理',
+            menuShow: true,
+            components: {
+              top: TopNav,
+              aside: LeftNav,
+              default: Content
+            },
+            iconCls: 'el-icon-menu',
+            children: [
+              { path: '/centerpise/token/pay', name: 'Token支付', component: TokenPay, menuShow: true },
+              { path: '/centerpise/token/lines', name: 'Token额度', component: TokenValue, menuShow: true },
+            ]
+          },
+        ]
+      },
         {
             path: '/table',
             name: 'Table',

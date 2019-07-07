@@ -48,7 +48,9 @@ export default {
   },
   methods:{
     enterl(){
-      this.$store.state.leftNavState = 'Enterpise';
+      // this.$store.state.leftNavState = 'CoreEnterpise';
+      // this.$router.push({path:'/centerpise'})
+      this.$store.state.leftNavState = 'Enterpise'; //非核心企业
       this.$router.push({path:'/enterpise'})
     },
     register(){
