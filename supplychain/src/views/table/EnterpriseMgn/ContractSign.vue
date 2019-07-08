@@ -20,7 +20,17 @@
           <el-input v-model="partB" clearable :style="{'width':'20%'}"></el-input>
         </label>
         <p style="margin-top:50px"> </p>
-        <el-button type="primary" round @click="addcontractTXT">添加合同文本</el-button>
+        <!-- action="后端链接" -->
+        <el-upload
+          class="upload-demo"
+          action="https://jsonplaceholder.typicode.com/posts/"  
+          :before-remove="beforeRemove"
+          multiple
+          :limit="1"
+          :on-exceed="handleExceed"
+          :file-list="fileList">
+          <el-button type="primary" round>添加合同文本</el-button>
+        </el-upload>
         <p style="margin-top:40px"></p>
         <el-button type="primary" round @click="addContract">上传</el-button>
       </div>
@@ -33,6 +43,7 @@ export default {
   name: "App",
   data() {
     return {
+      fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
       list: [{id:"1",name:"",partA:"",partB:"",ctime:"",contractTXT:null}],
       id: "",
       name: "",
@@ -42,6 +53,12 @@ export default {
     };
   },
   methods: {
+    handleExceed(files, fileList) {
+        this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+    },
+    beforeRemove(file, fileList) {
+        return this.$confirm(`确定移除 ${ file.name }？`);
+    },
     addcontractTXT(){
 
     },
