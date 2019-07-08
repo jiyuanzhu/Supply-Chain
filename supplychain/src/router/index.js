@@ -32,6 +32,7 @@ import DeliveryGoods from '@/views/table/Logistics/DeliveryGoods'
 import AchieveSending from '@/views/table/Logistics/AchieveSending'
 import BankCredit from '@/views/table/Bank/BankCredit'
 import CashingList from '@/views/table/Bank/CashingList'
+import ContractWaitList from '@/views/table/EnterpriseMgn/ContractWaitList'
 
 import Pending from '@/views/Pending'
 Vue.use(Router)
@@ -99,7 +100,7 @@ export default new Router({
                     children: [
                         { path: '/enterpise/contract/list', name: '合同列表', component: ContractList, menuShow: true },
                         { path: '/enterpise/contract/signedA', name: '签署合同', component: ContractSign, menuShow: true },
-                        { path: '/enterpise/contract/signedB', name: '合同确认', component: ContractList, menuShow: true },
+                        { path: '/enterpise/contract/signedB', name: '合同确认', component: ContractWaitList, menuShow: true },
                     ]
                 },
                 {
