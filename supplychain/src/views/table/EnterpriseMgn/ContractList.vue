@@ -58,9 +58,9 @@
     <el-table :data="tableData" border height="520" style="width: 100%" @cell-click="detail">
       <el-table-column prop="id" label="Id" width="50" align="center"></el-table-column>
       <el-table-column prop="name" label="合同名称" width="160" align="center"></el-table-column>
-      <el-table-column prop="partA" label="甲方" width="160" align="center"></el-table-column>
-      <el-table-column prop="partB" label="乙方" width="160" align="center"></el-table-column>
-      <el-table-column prop="strtime" label="签署时间" align="center"></el-table-column>
+      <el-table-column prop="partyA" label="甲方" width="160" align="center"></el-table-column>
+      <el-table-column prop="partyB" label="乙方" width="160" align="center"></el-table-column>
+      <el-table-column prop="ctime" label="签署时间" align="center"></el-table-column>
     </el-table>
   </div>
 </template>
@@ -71,119 +71,137 @@ export default {
   data() {
     return {
       list: [
-        {
-          id: "1",
-          name: "四方精创合同",
-          partA: "老师",
-          partB: "学生",
-          ctime: new Date(),
-          strtime: "",
-          contractTXT: null
-        },
-        {
-          id: "2",
-          name: "四方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "3",
-          name: "三方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "4",
-          name: "五精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "5",
-          name: "五方精创合同",
-          partA: "老师",
-          partB: "学生",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "6",
-          name: "六方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "7",
-          name: "六方精创合同",
-          partA: "老师",
-          partB: "学生",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "8",
-          name: "四方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "9",
-          name: "四方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "10",
-          name: "四方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "11",
-          name: "四方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "12",
-          name: "四方精创作业合同",
-          partA: "学生",
-          partB: "老师",
-          ctime: new Date(),
-          strtime: ""
-        }
+        // {
+        //   id: "1",
+        //   name: "四方精创合同",
+        //   partA: "老师",
+        //   partB: "学生",
+        //   ctime: new Date(),
+        //   strtime: "",
+        //   contractTXT: null
+        // },
+        // {
+        //   id: "2",
+        //   name: "四方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "3",
+        //   name: "三方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "4",
+        //   name: "五精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "5",
+        //   name: "五方精创合同",
+        //   partA: "老师",
+        //   partB: "学生",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "6",
+        //   name: "六方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "7",
+        //   name: "六方精创合同",
+        //   partA: "老师",
+        //   partB: "学生",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "8",
+        //   name: "四方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "9",
+        //   name: "四方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "10",
+        //   name: "四方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "11",
+        //   name: "四方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "12",
+        //   name: "四方精创作业合同",
+        //   partA: "学生",
+        //   partB: "老师",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // }
       ],
       tableData: [],
       id: "",
       name: "",
-      partA: "",
-      partB: "",
+      partyA: "",
+      partyB: "",
       ctime: "",
       contractTXT: null,
       idKey: "",
       nameKey: "",
       partAKey: "",
       partBKey: "",
-      strtimeKey: ""
+      strtimeKey: "",
+      company_name:""
     };
   },
+  created(){
+    this.getList();
+  },
   methods: {
+    getList(){
+      this.company_name = this.userInfo.cname
+      this.$api({
+        url:"http://localhost:8088/enterpise/contract/list",
+        method:"get",
+        params: {
+          company_name : this.company_name,
+        }
+      }).then(data =>{
+        console.log(this.company_name);
+        console.log(data);
+        this.tableData = data;
+      })
+    },
     search(idKey, nameKey, partAKey, partBKey, strtimeKey) {
       this.tableData = [];
       this.list.forEach(item => {
@@ -219,7 +237,8 @@ export default {
   },
   mounted() {
     {
-      this.init();
+      // this.init();
+
     }
   }
 };

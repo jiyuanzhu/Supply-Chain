@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d23f7717-99bc-469e-b61d-89a272d5058b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/supplychain/src/util/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="D:\vueProject\Supply-Chain\dist/" />
@@ -13,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/supplychain/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="281" column="10" lean-forward="true" selection-start-line="281" selection-start-column="10" selection-end-line="281" selection-end-column="10" />
+            <state relative-caret-position="-54">
+              <caret line="281" column="10" selection-start-line="281" selection-start-column="10" selection-end-line="281" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -29,6 +30,15 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/supplychain/src/views/Insurance.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/supplychain/src/util/api.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -38,10 +48,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/supplychain/src/App.vue">
+        <entry file="file://$PROJECT_DIR$/supplychain/src/views/login/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-168" />
+            <state relative-caret-position="-570" />
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/supplychain/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -51,21 +66,34 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="830" />
-    <option name="y" value="35" />
-    <option name="width" value="980" />
-    <option name="height" value="1015" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/supplychain/src/util/api.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -73,29 +101,11 @@
               <item name="Supply-Chain" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="D:\vueProject\Supply-Chain" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
-            <path>
-              <item name="Supply-Chain" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="D:\vueProject\Supply-Chain" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="supplychain" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Supply-Chain" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="D:\vueProject\Supply-Chain" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="supplychain" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Supply-Chain" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="D:\vueProject\Supply-Chain" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="supplychain" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="router" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -134,17 +144,17 @@
       <workItem from="1562117738583" duration="156000" />
       <workItem from="1562117907449" duration="24000" />
       <workItem from="1562487005465" duration="976000" />
+      <workItem from="1562683068381" duration="374000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2331000" />
+    <option name="totallyTimeSpent" value="2705000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="762" y="0" width="781" height="830" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12533513" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35684648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -161,7 +171,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3323782" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -181,26 +191,39 @@
     <entry file="file://$PROJECT_DIR$/supplychain/src/views/Enterprise.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/supplychain/src/views/MainLayout.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/supplychain/src/views/Insurance.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/supplychain/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/supplychain/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-168" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplychain/src/views/MainLayout.vue">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/supplychain/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="281" column="10" lean-forward="true" selection-start-line="281" selection-start-column="10" selection-end-line="281" selection-end-column="10" />
+        <state relative-caret-position="-54">
+          <caret line="281" column="10" selection-start-line="281" selection-start-column="10" selection-end-line="281" selection-end-column="10" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplychain/src/views/Insurance.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplychain/src/views/login/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplychain/src/views/login/EnterpriseLogin.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supplychain/src/util/api.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

@@ -25,7 +25,18 @@ export default {
     };
   },
   methods: {
-    goodsCertain(){},    
+    goodsCertain(){
+      this.$api({
+        url:"http://localhost:8088/enterpise/logistics/confirm",
+        method:"post",
+        data:{
+          id:this.id,
+          rece_state: "1"
+        }
+      }).then((response) =>{
+        console.log(response);
+      } )
+    },
         
     init(){
     }
