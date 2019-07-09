@@ -4,8 +4,12 @@ const userInfo={
     cname:"1",
     ctype:"1"
 }
+const loginPage={
+    pageType:"",    //
 
+}
 
 export default {
-    userInfo
+    userInfo,
+    loginPage
 }

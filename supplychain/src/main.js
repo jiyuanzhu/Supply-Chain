@@ -13,6 +13,7 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 Vue.prototype.userInfo = global_variable.userInfo
+Vue.prototype.loginPage = global_variable.loginPage
 
 /* eslint-disable no-new */
 new Vue({

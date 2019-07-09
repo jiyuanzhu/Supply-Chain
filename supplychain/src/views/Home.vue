@@ -60,16 +60,24 @@ export default {
   },
   methods:{
     banklogin(){
-      this.$router.replace('/banklogin')
+      // this.$router.replace('/banklogin')
+      this.loginPage.pageType="bank"
+      this.$router.replace('/Login')
     },
     enterpriselogin(){
-      this.$router.replace('/enterpriselogin')
+      // this.$router.replace('/enterpriselogin')
+      this.loginPage.pageType="enterprise"
+      this.$router.replace('/Login')
     },
     translogin(){
-      this.$router.replace('/translogin')
+      // this.$router.replace('/translogin')
+      this.loginPage.pageType="transport"
+      this.$router.replace('/Login')
     },
     insurancelogin(){
-      this.$router.replace('/insurancelogin')
+      // this.$router.replace('/insurancelogin')
+      this.loginPage.pageType="insurance"
+      this.$router.replace('/Login')
     }
   }
 }

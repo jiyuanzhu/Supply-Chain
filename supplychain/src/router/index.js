@@ -3,10 +3,10 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Home from '@/views/Home'
 import TopNav from '@/views/nav/TopNav'
-import BankLogin from '@/views/login/BankLogin'
-import EnterpriseLogin from '@/views/login/EnterpriseLogin'
-import TransLogin from '@/views/login/TransLogin'
-import InsuranceLogin from '@/views/login/InsuranceLogin'
+// import BankLogin from '@/views/login/BankLogin'
+// import EnterpriseLogin from '@/views/login/EnterpriseLogin'
+// import TransLogin from '@/views/login/TransLogin'
+// import InsuranceLogin from '@/views/login/InsuranceLogin'
 import Register from '@/views/login/Register'
 import LeftNav from '@/views/nav/LeftNav'
 import Bank from '@/views/Bank'
@@ -35,6 +35,7 @@ import CashingList from '@/views/table/Bank/CashingList'
 import ContractWaitList from '@/views/table/EnterpriseMgn/ContractWaitList'
 import PersonInfo from '@/views/table/PersonInfo'
 import ChangePassWord from '@/views/table/ChangePassWord'
+import Login from '@/views/login/Login'
 
 import Pending from '@/views/Pending'
 Vue.use(Router)
@@ -56,27 +57,34 @@ export default new Router({
             component: Home
 
         },
-        {
-            path: '/banklogin',
-            name: 'BankLogin',
-            component: BankLogin,
+        // {
+        //     path: '/banklogin',
+        //     name: 'BankLogin',
+        //     component: BankLogin,
 
-        },
+        // },
+        // {
+        //     path: '/enterpriselogin',
+        //     name: 'EnterpriseLogin',
+        //     component: EnterpriseLogin,
+        // },
+        // {
+        //     path: '/translogin',
+        //     name: 'TransLogin',
+        //     component: TransLogin,
+        // },
+        // {
+        //     path: '/insurancelogin',
+        //     name: 'InsuranceLogin',
+        //     component: InsuranceLogin,
+        // },
+
         {
-            path: '/enterpriselogin',
-            name: 'EnterpriseLogin',
-            component: EnterpriseLogin,
+            path: '/Login',
+            name: 'Login',
+            component: Login,
         },
-        {
-            path: '/translogin',
-            name: 'TransLogin',
-            component: TransLogin,
-        },
-        {
-            path: '/insurancelogin',
-            name: 'InsuranceLogin',
-            component: InsuranceLogin,
-        },
+
         {
             path: '/register',
             name: 'Register',
