@@ -74,6 +74,7 @@ import { delay } from 'q';
           this.$store.state.topNavState="user"
           localStorage.removeItem('access-user');
           this.$router.replace('/')
+          this.$router.go(0)
         })
 
       }
