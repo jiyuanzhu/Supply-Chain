@@ -53,10 +53,10 @@
     <el-table :data="tableData" border height="520" style="width: 100%" @cell-click="getIdClick">
       <el-table-column prop="id" label="Id" width="50" align="center"></el-table-column>
       <el-table-column prop="name" label="企业名称"  align="center"></el-table-column>
-      <el-table-column prop="strtime" label="授信时间" align="center"></el-table-column>
-      <el-table-column label="操作" align="center" >
-        <a href="" @click.prevent="">取消授信</a>
-      </el-table-column>
+      <el-table-column prop="time" label="授信时间" align="center"></el-table-column>
+      <el-table-column prop="limits" label="发放额度"align="center" ></el-table-column>
+
+
     </el-table>
   </div>
 </template>
@@ -67,91 +67,104 @@ export default {
   data() {
     return {
       list: [
-        {
-          id: "1",
-          name: "四方精创企业",
-          ctime: new Date(),
-          strtime: "",
-        },
-        {
-          id: "2",
-          name: "四方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "3",
-          name: "三方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "4",
-          name: "五精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "5",
-          name: "五方精创企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "6",
-          name: "六方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "7",
-          name: "六方精创企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "8",
-          name: "四方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "9",
-          name: "四方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "10",
-          name: "四方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "11",
-          name: "四方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "12",
-          name: "四方精创作业企业",
-          ctime: new Date(),
-          strtime: ""
-        }
+        // {
+        //   id: "1",
+        //   name: "四方精创企业",
+        //   ctime: new Date(),
+        //   strtime: "",
+        // },
+        // {
+        //   id: "2",
+        //   name: "四方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "3",
+        //   name: "三方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "4",
+        //   name: "五精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "5",
+        //   name: "五方精创企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "6",
+        //   name: "六方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "7",
+        //   name: "六方精创企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "8",
+        //   name: "四方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "9",
+        //   name: "四方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "10",
+        //   name: "四方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "11",
+        //   name: "四方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "12",
+        //   name: "四方精创作业企业",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // }
       ],
       tableData: [],
       id: "1",
       name: "",
-      ctime: "",
+      time: "",
       strtime: "",
+      limits: "",
       idKey: "",
       nameKey: "",
       strtimeKey: "",
       idClick: ""
     };
   },
+  created(){
+    this.getList();
+  },
   methods: {
+    getList(){
+      this.$api({
+        url:"http://localhost:8088/bank/creditManage/credit",
+        method:"get",
+      }).then(data =>{
+        console.log(data);
+        this.tableData = data;
+      })
+    },
     getIdClick(item,attribute){
         if(attribute.label=="操作"){
             this.idClick=item.id
@@ -222,7 +235,7 @@ export default {
   },
   mounted() {
     {
-      this.init();
+      // this.init();
     }
   }
 };

@@ -49,10 +49,10 @@
     <el-table :data="tableData" border height="520" style="width: 100%" @cell-click="getIdClick">
       <el-table-column prop="id" label="Id" width="50" align="center"></el-table-column>
       <el-table-column prop="name" label="兑换方"  align="center"></el-table-column>
-      <el-table-column prop="token" label="兑换Token金额"  align="center"></el-table-column>
-      <el-table-column prop="strtime" label="发起时间" align="center"></el-table-column>
+      <el-table-column prop="amount" label="兑换Token金额"  align="center"></el-table-column>
+      <el-table-column prop="time" label="发起时间" align="center"></el-table-column>
       <el-table-column label="操作" align="center" >
-        <a href="" @click.prevent="">完成兑换</a>
+        <a href="" @click.prevent="handleExchange">完成兑换</a>
       </el-table-column>
     </el-table>
   </div>
@@ -64,96 +64,97 @@ export default {
   data() {
     return {
       list: [
-        {
-          id: "1",
-          name: "四方精创企业",
-          token: "100",
-          ctime: new Date(),
-          strtime: "",
-        },
-        {
-          id: "2",
-          name: "四方精创作业企业",
-          token: "100",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "3",
-          name: "三方精创作业企业",
-          token: "100",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "4",
-          name: "五精创作业企业",
-          token: "100",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "5",
-          name: "五方精创企业",
-          token: "100",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "6",
-          name: "六方精创作业企业",
-          token: "100",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "7",
-          name: "六方精创企业",
-          token: "100",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "8",
-          name: "四方精创作业企业",
-          token: "200",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "9",
-          name: "四方精创作业企业",
-          token: "200",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "10",
-          name: "四方精创作业企业",
-          token: "200",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "11",
-          name: "四方精创作业企业",
-          token: "200",
-          ctime: new Date(),
-          strtime: ""
-        },
-        {
-          id: "12",
-          name: "四方精创作业企业",
-          token: "200",
-          ctime: new Date(),
-          strtime: ""
-        }
+        // {
+        //   id: "1",
+        //   name: "四方精创企业",
+        //   token: "100",
+        //   ctime: new Date(),
+        //   strtime: "",
+        // },
+        // {
+        //   id: "2",
+        //   name: "四方精创作业企业",
+        //   token: "100",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "3",
+        //   name: "三方精创作业企业",
+        //   token: "100",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "4",
+        //   name: "五精创作业企业",
+        //   token: "100",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "5",
+        //   name: "五方精创企业",
+        //   token: "100",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "6",
+        //   name: "六方精创作业企业",
+        //   token: "100",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "7",
+        //   name: "六方精创企业",
+        //   token: "100",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "8",
+        //   name: "四方精创作业企业",
+        //   token: "200",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "9",
+        //   name: "四方精创作业企业",
+        //   token: "200",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "10",
+        //   name: "四方精创作业企业",
+        //   token: "200",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "11",
+        //   name: "四方精创作业企业",
+        //   token: "200",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // },
+        // {
+        //   id: "12",
+        //   name: "四方精创作业企业",
+        //   token: "200",
+        //   ctime: new Date(),
+        //   strtime: ""
+        // }
       ],
       tableData: [],
       id: "1",
       name: "",
-      ctime: "",
+      time: "",
       strtime: "",
+      amount:"",
       idKey: "",
       nameKey: "",
       tokenKey: "",
@@ -161,7 +162,23 @@ export default {
       idClick: ""
     };
   },
+  created(){
+    this.getList();
+  },
+
   methods: {
+    getList(){
+      this.$api({
+        url:"http://localhost:8088//bank/token/exchange",
+        method:"get",
+      }).then(data =>{
+        console.log(data);
+        this.tableData = data;
+      })
+    },
+    handleExchange(){
+      console.log("heil");
+    },
     getIdClick(item,attribute){
         if(attribute.label=="操作"){
             this.idClick=item.id
@@ -203,7 +220,7 @@ export default {
   },
   mounted() {
     {
-      this.init();
+      // this.init();
     }
   }
 };
