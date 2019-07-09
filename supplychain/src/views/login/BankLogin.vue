@@ -48,6 +48,8 @@ export default {
   },
   methods:{
     bankl(){
+      // this.userInfo.uname="1"
+      //   console.log(this.userInfo)
       this.$store.state.leftNavState = 'Bank';
       this.$router.push({path:'/bank'})
     },

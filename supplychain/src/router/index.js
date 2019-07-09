@@ -33,6 +33,8 @@ import AchieveSending from '@/views/table/Logistics/AchieveSending'
 import BankCredit from '@/views/table/Bank/BankCredit'
 import CashingList from '@/views/table/Bank/CashingList'
 import ContractWaitList from '@/views/table/EnterpriseMgn/ContractWaitList'
+import PersonInfo from '@/views/table/PersonInfo'
+import ChangePassWord from '@/views/table/ChangePassWord'
 
 import Pending from '@/views/Pending'
 Vue.use(Router)
@@ -79,6 +81,40 @@ export default new Router({
             path: '/register',
             name: 'Register',
             component: Register,
+        },
+        {
+            path: '/PersonInfo',
+            name: 'PersonInfo',
+            redirect: '/PersonInfo/0',
+            component: MainLayout,
+            menuShow: false,
+            children: [{
+                path: '/PersonInfo/0',
+                name: '个人信息',
+                menuShow: true,
+                components: {
+                    top: TopNav,
+                    aside: null,
+                    default: PersonInfo
+                },
+            }]
+        },
+        {
+            path: '/ChangePassWord',
+            name: 'ChangePassWord',
+            redirect: '/ChangePassWord/0',
+            component: MainLayout,
+            menuShow: false,
+            children: [{
+                path: '/ChangePassWord/0',
+                name: '修改密码',
+                menuShow: true,
+                components: {
+                    top: TopNav,
+                    aside: null,
+                    default: ChangePassWord
+                },
+            }]
         },
         //登陆之后的路由
         {
@@ -207,21 +243,6 @@ export default new Router({
                     children: [
                         { path: '/insurance/policy/list', name: '保单列表', component: InsuranceList, menuShow: true }
                     ]
-                },
-                {
-                    path: '/insurance/token',
-                    name: 'Token管理',
-                    menuShow: true,
-                    components: {
-                        top: TopNav,
-                        aside: LeftNav,
-                        default: Content
-                    },
-                    iconCls: 'el-icon-menu',
-                    children: [
-                        { path: '/insurance/token/exchange', name: 'Token兑换', component: TokenExchange, menuShow: true },
-                        { path: '/insurance/token/lines', name: 'Token额度', component: TokenValue, menuShow: true },
-                    ]
                 }
             ]
         },
@@ -245,22 +266,6 @@ export default new Router({
                         { path: '/trans/transport/manage', name: '管理运输', component: LogisticsList, menuShow: true },
                         { path: '/trans/transport/send', name: '发出货物', component: DeliveryGoods, menuShow: true },
                         { path: '/trans/transport/done', name: '送达货物', component: AchieveSending, menuShow: true },
-                    ]
-                },
-                {
-                    path: '/trans/token',
-                    name: 'Token管理',
-                    menuShow: true,
-                    components: {
-                        top: TopNav,
-                        aside: LeftNav,
-                        default: Content
-                    },
-                    iconCls: 'el-icon-menu',
-                    children: [
-                        { path: '/trans/token/exchange', name: 'Token兑换', component: TokenExchange, menuShow: true },
-                        { path: '/trans/token/pay', name: 'Token支付', component: TokenPay, menuShow: true },
-                        { path: '/trans/token/lines', name: 'Token额度', component: TokenValue, menuShow: true },
                     ]
                 },
                 {

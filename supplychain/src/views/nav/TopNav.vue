@@ -17,8 +17,16 @@
           <el-row v-show="$store.state.topNavState==='user'">
             <el-col :span="24">
               <el-menu  class="el-menu-demo" mode="horizontal"  :router="true">
-                <el-menu-item index="1">个人信息</el-menu-item>
-                <el-menu-item index="2">修改密码</el-menu-item>
+                <el-menu-item @click="personInfo">账户信息</el-menu-item>
+                <el-menu-item @click="changePassWord">修改密码</el-menu-item>
+                <el-menu-item @click="logout">退出登录</el-menu-item>
+              </el-menu>
+            </el-col>
+          </el-row>
+          <el-row v-show="($store.state.topNavState==='person'||$store.state.topNavState==='changewords')">
+            <el-col :span="24">
+              <el-menu  class="el-menu-demo" mode="horizontal"  :router="true">
+                <el-menu-item @click="turnback">返回</el-menu-item>
                 <el-menu-item @click="logout">退出登录</el-menu-item>
               </el-menu>
             </el-col>
@@ -30,6 +38,7 @@
 </template>
 
 <script>
+import { delay } from 'q';
   export  default {
     name:"TopNav",
     data(){
@@ -46,12 +55,25 @@
       this.nickname = name || '';
     },
     methods:{
-      logout(){
+      personInfo(){
+        this.$store.state.topNavState="person"
+        this.$router.push({path:'/PersonInfo'})
+      },
+      changePassWord(){
+        this.$store.state.topNavState="changewords"
+        this.$router.push({path:'/ChangePassWord'})
+      },
+      turnback(){
+        this.$store.state.topNavState="user"
+        this.$router.go(-1)
+      },
+      logout(){      
         this.$confirm('确认退出吗?', '提示',
           {onfirmButtonClass: 'el-button--warning'}).then(() =>
         {
+          this.$store.state.topNavState="user"
           localStorage.removeItem('access-user');
-
+          this.$router.replace('/')
         })
 
       }
