@@ -1,114 +1,209 @@
 <template>
-    <div class="regback" :style="regback">
-        <div id="regtop">
-            <TopNav></TopNav>
-        </div>
-        <div id="register">
-            <div id="regtitle">
-                <p>注册</p>
-            </div>
-            <div id="inputusername">
-                <p>请输入用户名</p>
-                <el-input type="text"></el-input>
-            </div>
-            <div id="inputpassword">
-                <p>请输入密码</p>
-                <el-input type="text"></el-input>
-            </div>
-            <div id="inputpassword1">
-                <p>请再次输入密码</p>
-                <el-input type="text"></el-input>
-            </div>
-            <el-button @click="registerbt" class="registerbt">注册</el-button>
-        </div>
+  <div class="pageback1" :style="pageback">
+    <div id="pagetop">
+      <TopNav></TopNav>
     </div>
+    <div id="pagebody">
+      <div id="pagebody1">
+        <p>{{pageName}}管理子系统</p>
+      </div>
+      <div id="pagebody2">
+        <div id="login">
+          <div id="logintitle2">
+            <p>注册</p>
+          </div>
+          <div id="username">
+            <label>
+              <p>请输入用户名</p>
+              <el-input clearable v-model="uname"></el-input>
+            </label>
+          </div>
+          <div id="password">
+            <label>
+              <p>请输入密码</p>
+              <el-input clearable show-password v-model="password"></el-input>
+            </label>
+          </div>
+          <div id="password">
+            <label>
+              <p>请再次输入密码</p>
+              <el-input clearable show-password v-model="repeatPassword"></el-input>
+            </label>
+          </div>
+          <div class="doubut2">
+            <el-button @click="register_logon" class="bankl2">确认注册</el-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import TopNav from '@/views/nav/TopNavLogin'
+import TopNav from "@/views/nav/TopNavLogin";
 export default {
-  name: 'Register',
-  components:{
+  name: "PageLogin",
+  components: {
     TopNav
   },
-  data(){
-    return{
-        regback:{
-        backgroundImage: "url(" + require("@/assets/back1.jpg") + ")",
+  data() {
+    return {
+      pageName: "",  
+      uname: "",
+      password: "",
+      repeatPassword: "",
+      pageback: {
+        backgroundImage: "",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100%",
-      },
+        backgroundSize: "100%"
+      }
+    };
+  },
+  methods: {
+    register_logon() {
+
+
+      switch (this.loginPage.pageType) {
+          case "bank":
+              this.$store.state.leftNavState = "Bank";
+              this.$router.push({ path: "/bank" });
+              break;
+          case "enterprise":
+              // this.$store.state.leftNavState = 'CoreEnterpise';
+              // this.$router.push({path:'/centerpise'})
+              this.$store.state.leftNavState = 'Enterpise'; //非核心企业
+              this.$router.push({path:'/enterpise'})
+              break;
+          case "transport":
+              this.$store.state.leftNavState = 'Trans';
+              this.$router.push({path:'/trans'})
+              break;
+          case "insurance":
+              this.$store.state.leftNavState = 'Insurance';
+              this.$router.push({path:'/insurance'})
+              break;
+      }
+      
+    },
+    init(){
+        switch (this.loginPage.pageType) {
+          case "bank":
+              this.pageName="银行"
+              this.pageback.backgroundImage="url(" + require("@/assets/bank.jpg") + ")"
+              break;
+          case "enterprise":
+              this.pageName="企业"
+              this.pageback.backgroundImage="url(" + require("@/assets/enterprise.jpg") + ")"
+              break;
+          case "transport":
+              this.pageName="运输"
+              this.pageback.backgroundImage= "url(" + require("@/assets/trans.jpg") + ")"
+              break;
+          case "insurance":
+              this.pageName="保险"
+              this.pageback.backgroundImage="url(" + require("@/assets/insurance.jpg") + ")"
+              break;  
+      }
     }
   },
-  methods:{
-      registerbt(){
-      this.$router.replace('/')
-    }
+  created(){
+      this.init()
   }
-}
+};
 </script>
 
 <style>
-.regback{
-  height:750px;
-  width:100%;
+.pageback1 {
+  height: 750px;
+  width: 100%;
+}
+
+#pagetop {
+  height: 13%;
+  width: 100%;
+}
+
+#pagebody {
+  height: 87%;
+  width: 100%;
   text-align: center;
 }
 
+#pagebody1 {
+  margin: auto;
+  height: 12%;
+  width: 46%;
+  font-family: "华文行楷";
+  font-size: 30px;
+  text-align: center;
+}
 
-#register{
-  height:70%;
-  width:50%;
+#pagebody2 {
+  margin: auto;
+  height: 73%;
+  width: 27%;
+}
+
+#login {
+  height: 100%;
+  width: 100%;
   background-color: rgb(252, 247, 252);
-  border-radius:30px;
+  border-radius: 30px;
   box-shadow: 1px #383737;
   text-align: center;
-  margin:auto;
 }
 
-#regtitle{
-  height:20%;
-  width:100%;
+#logintitle2 {
+  height: 12%;
+  width: 100%;
   text-align: center;
-  font-family:"华文行楷"; 
-  font-size:30px;
-  padding-top:2px;
+  font-family: "华文行楷";
+  font-size: 30px;
+  padding-top: 6px;
 }
 
-#inputusername{
-  margin:auto;
-  height:16%;
-  width:62%;
+#username {
+  margin: auto;
+  height: 18%;
+  width: 62%;
   text-align: left;
-  font-family:"华文行楷"; 
-  font-size:20px;
+  font-family: "华文行楷";
+  font-size: 20px;
 }
 
-#inputpassword{
-  margin:auto;
-  height:16%;
-  width:62%;
+#password {
+  margin: auto;
+  height: 18%;
+  width: 62%;
   text-align: left;
-  font-family:"华文行楷"; 
-  font-size:20px;
+  font-family: "华文行楷";
+  font-size: 20px;
 }
 
-#inputpassword1{
-  margin:auto;
-  height:16%;
-  width:62%;
-  text-align: left;
-  font-family:"华文行楷"; 
-  font-size:20px;
+.doubut2 {
+  height: 20%;
+  width: 40%;
+  margin: auto;
 }
-
-.registerbt{
+.bankl2 {
   background-color: rgb(17, 212, 226);
-  width:100px;
-  height:45px;
-  margin-top: 25px;
-  font-family:"华文行楷"; 
-  font-size:25px;
+  width: 140px;
+  height: 45px;
+  margin-top: 30px;
+  font-family: "华文行楷";
+  font-size: 25px;
   text-align: center;
+  float: left;
+}
+
+.register {
+  background-color: rgb(17, 212, 226);
+  width: 100px;
+  height: 45px;
+  margin-top: 50px;
+  font-family: "华文行楷";
+  font-size: 25px;
+  text-align: center;
+  float: right;
 }
 </style>

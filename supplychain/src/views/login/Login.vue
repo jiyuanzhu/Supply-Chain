@@ -1,5 +1,5 @@
 <template>
-  <div class="pageback" :style="pageback">
+  <div class="pageback1" :style="pageback">
     <div id="pagetop">
       <TopNav></TopNav>
     </div>
@@ -25,7 +25,7 @@
             </label>
           </div>
           <div class="doubut">
-            <el-button @click="bankl" class="bankl">登录</el-button>
+            <el-button @click="logon" class="bankl">登录</el-button>
             <el-button @click="register" class="register">注册</el-button>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default {
     };
   },
   methods: {
-    bankl() {
+    logon() {
       // this.userInfo.uname="1"
       //   console.log(this.userInfo)
       switch (this.loginPage.pageType) {
@@ -110,7 +110,7 @@ export default {
 </script>
 
 <style>
-.pageback {
+.pageback1 {
   height: 750px;
   width: 100%;
 }
