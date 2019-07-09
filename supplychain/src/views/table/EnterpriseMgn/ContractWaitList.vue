@@ -58,9 +58,14 @@
     <el-table :data="tableData" border height="520" style="width: 100%" @cell-click="getIdClick">
       <el-table-column prop="id" label="Id"  width="70" align="center"></el-table-column>
       <el-table-column prop="name" label="合同名称" align="center"></el-table-column>
-      <el-table-column prop="partA" label="甲方" align="center"></el-table-column>
-      <el-table-column prop="partB" label="乙方" align="center"></el-table-column>
-      <el-table-column prop="strtime" label="签署时间" align="center"></el-table-column>
+      <el-table-column prop="partyA" label="甲方" align="center"></el-table-column>
+      <el-table-column prop="partyB" label="乙方" align="center"></el-table-column>
+      <el-table-column prop="ctime" label="签署时间" align="center"></el-table-column>
+      <el-table-column prop="partyAHash" label="甲方合同Hash值" align="center"></el-table-column>
+      <el-table-column prop="partyBHash" label="乙方合同Hash值" align="center"></el-table-column>
+      <el-table-column label="乙方合同操作" align="center" >
+        <a href="" @click.prevent="">上传乙方合同</a>
+      </el-table-column>
       <el-table-column label="确认操作" align="center" >
         <a href="" @click.prevent="">确认签署</a>
       </el-table-column>
@@ -178,8 +183,8 @@ export default {
       tableData: [],
       id: "",
       name: "",
-      partA: "",
-      partB: "",
+      partyA: "",
+      partyB: "",
       ctime: "",
       idClick: "",
       contractTXT: null,
@@ -190,16 +195,59 @@ export default {
       strtimeKey: ""
     };
   },
+  created() {
+    this.getList()
+  },
   methods: {
+    getList(){
+      this.$api({
+        url:"http://localhost:8088/enterpise/contract/signedB",
+        method:"get",
+        params: {
+          company_name : this.userInfo.cname,
+          state : "0"
+        }
+      }).then(data =>{
+        console.log(this.company_name);
+        console.log(data);
+        this.tableData = data;
+        this.list=this.tableData
+      })
+    },
     getIdClick(item,attribute){
-        if(attribute.label=="确认操作" || attribute.label=="取消操作" ){
-            this.idClick=item.id
-            var index=this.list.findIndex(item =>{
-              if(item.id==this.idClick) return true
+        if(attribute.label=="确认操作"){//且partyAHash===partyBHash
+          this.idClick=item.id
+          var index=this.list.findIndex(item =>{
+            if(item.id==this.idClick) return true
           })
           this.list.splice(index,1)
           this.search(this.idKey,this.nameKey,this.partAKey,this.partBKey,this.strtimeKey)
-        } else{ //显示合约文本
+        } else
+        if(attribute.label=="取消操作" ){
+          this.idClick=item.id
+          var index=this.list.findIndex(item =>{
+            if(item.id==this.idClick) return true
+          })
+          
+          this.$api({
+            url:"http://localhost:8088/enterpise/contract/signedB",
+            method:"post",
+            data:{
+              id:this.list[index].id,
+              
+            }
+          }).then((response) =>{
+            console.log(response);
+            
+          })
+
+          this.list.splice(index,1)
+          this.search(this.idKey,this.nameKey,this.partAKey,this.partBKey,this.strtimeKey)
+        } else
+        if(attribute.label=="乙方合同操作" ){
+
+        }
+        else{ //显示合约文本
 
         }
     },
@@ -236,11 +284,6 @@ export default {
       this.tableData = this.list;
     }
   },
-  mounted() {
-    {
-      this.init();
-    }
-  }
 };
 </script>
 

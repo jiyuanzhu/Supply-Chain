@@ -66,10 +66,10 @@
     </div>
     <el-table :data="tableData" border height="520" :style="{'width':'100%'}"  @cell-click="detail">
       <el-table-column prop="id" label="订单编号" width="100" align="center"></el-table-column>
-      <el-table-column prop="name" label="物流公司" width="160" align="center"></el-table-column>
-      <el-table-column prop="partA" label="寄货方" width="160" align="center"></el-table-column>
-      <el-table-column prop="partB" label="收货方" width="160" align="center"></el-table-column>
-      <el-table-column prop="strtime" label="创建时间" width="160" align="center"></el-table-column>
+      <el-table-column prop="company" label="物流公司" width="160" align="center"></el-table-column>
+      <el-table-column prop="sender" label="寄货方" width="160" align="center"></el-table-column>
+      <el-table-column prop="receiver" label="收货方" width="160" align="center"></el-table-column>
+      <el-table-column prop="time" label="创建时间" width="160" align="center"></el-table-column>
       <el-table-column prop="orderState" label="订单状态" align="center"></el-table-column>
     </el-table>
   </div>
@@ -88,8 +88,7 @@ export default {
           partB: "学生",
           ctime: new Date(),
           strtime: "",
-          orderState: "待收货",
-          orderState: "", //订单状态
+          orderState: "待收货",//订单状态
           goods: "apple*2,banana*3", //运输物品
           orderTracking: "", //订单追踪
           tokenCost:"", //物流费用
@@ -213,42 +212,39 @@ export default {
       orderStateKey: ""  //订单状态关键字搜索
     };
   },
+  created() {
+    this.getList()
+  },
   methods: {
+    getList(){
+      this.$api({
+        url:"http://localhost:8088/enterpise/logistics/list",
+        method:"get",
+        params: {
+          company_name : this.userInfo.cname,
+        }
+      }).then(data =>{
+        console.log(this.company_name);
+        console.log(data);
+        this.tableData = data;
+        this.list=this.tableData
+      })
+    },
     search(idKey, nameKey, partAKey, partBKey, strtimeKey,orderStateKey) {
       this.tableData = [];
       this.list.forEach(item => {
         if (
           item.id.indexOf(idKey) != -1 &&
-          item.name.indexOf(nameKey) != -1 &&
-          item.partA.indexOf(partAKey) != -1 &&
-          item.partB.indexOf(partBKey) != -1 &&
-          item.strtime.indexOf(strtimeKey) != -1 &&
+          item.company.indexOf(nameKey) != -1 &&
+          item.sender.indexOf(partAKey) != -1 &&
+          item.receiver.indexOf(partBKey) != -1 &&
+          item.time.indexOf(strtimeKey) != -1 &&
           item.orderState.indexOf(orderStateKey) != -1
         )
           this.tableData.push(item);
       });
     },
     detail(item) {},
-    init() {
-      for (let index = 0; index < this.list.length; index++) {
-        const element = this.list[index];
-        var dt = element.ctime;
-        var y = dt.getFullYear();
-        var m = dt.getMonth();
-        var d = dt.getDate();
-        var hh = dt.getHours();
-        var mm = dt.getMinutes();
-        var ss = dt.getSeconds();
-        this.list[index].strtime =
-          y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
-      }
-      this.tableData = this.list;
-    }
-  },
-  mounted() {
-    {
-      this.init();
-    }
   }
 };
 </script>

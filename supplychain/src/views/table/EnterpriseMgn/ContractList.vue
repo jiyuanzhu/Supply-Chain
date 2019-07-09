@@ -200,6 +200,7 @@ export default {
         console.log(this.company_name);
         console.log(data);
         this.tableData = data;
+        this.list=this.tableData
       })
     },
     search(idKey, nameKey, partAKey, partBKey, strtimeKey) {
@@ -208,9 +209,9 @@ export default {
         if (
           item.id.indexOf(idKey) != -1 &&
           item.name.indexOf(nameKey) != -1 &&
-          item.partA.indexOf(partAKey) != -1 &&
-          item.partB.indexOf(partBKey) != -1 &&
-          item.strtime.indexOf(strtimeKey) != -1
+          item.partyA.indexOf(partAKey) != -1 &&
+          item.partyB.indexOf(partBKey) != -1 &&
+          item.ctime.indexOf(strtimeKey) != -1
         )
           this.tableData.push(item);
       });
@@ -219,28 +220,7 @@ export default {
     detail(item) {
 
     },
-    init() {
-      for (let index = 0; index < this.list.length; index++) {
-        const element = this.list[index];
-        var dt = element.ctime;
-        var y = dt.getFullYear();
-        var m = dt.getMonth();
-        var d = dt.getDate();
-        var hh = dt.getHours();
-        var mm = dt.getMinutes();
-        var ss = dt.getSeconds();
-        this.list[index].strtime =
-          y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
-      }
-      this.tableData = this.list;
-    }
   },
-  mounted() {
-    {
-      // this.init();
-
-    }
-  }
 };
 </script>
 
