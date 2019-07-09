@@ -1,87 +1,45 @@
 <template>
-  <div class="regback2" :style="{regback,'padding-top':'50px'}">
-    <div id="register">
+  <div class="regback" :style="{regback,'padding-top':'50px'}">
+    <div class="register3">
       <div id="regtitle2">
-        <p>账户信息</p>
+        <p>修改密码</p>
       </div>
       <el-row :gutter="21">
         <el-col :span="4">&nbsp;</el-col>
-        <el-col :span="4">
+        <el-col :span="5">
           <p style="margin-top:8px"></p>
-          <label for="uname">
-            <div id="inputusername" :style="{'display':'inline'}">用户名</div>
+          <label for="oldKey">
+            <div id="inputusername" :style="{'display':'inline'}">旧密码</div>
           </label>
         </el-col>
-        <el-col :span="13">
-          <el-input id="uname" v-model="uname" clearable :style="{'width':'80%','float':'left'}"></el-input>
+        <el-col :span="12">
+          <el-input id="oldKey" show-password v-model="oldKey" clearable :style="{'width':'80%','float':'left'}"></el-input>
         </el-col>
       </el-row>
       <p style="margin-top:30px"></p>
       <el-row :gutter="21">
         <el-col :span="4">&nbsp;</el-col>
-        <el-col :span="4">
+        <el-col :span="5">
           <p style="margin-top:8px"></p>
-          <label for="cname">
-            <div id="inputusername" :style="{'display':'inline'}">公司名</div>
+          <label for="newKey">
+            <div id="inputusername" :style="{'display':'inline'}">新密码</div>
           </label>
         </el-col>
-        <el-col :span="13">
-          <el-input id="cname" v-model="cname" clearable :style="{'width':'80%','float':'left'}"></el-input>
+        <el-col :span="12">
+          <el-input id="newKey" show-password v-model="newKey" clearable :style="{'width':'80%','float':'left'}"></el-input>
         </el-col>
       </el-row>
       <p style="margin-top:30px"></p>
       <el-row :gutter="21">
         <el-col :span="4">&nbsp;</el-col>
-        <el-col :span="4">
+        <el-col :span="5">
           <p style="margin-top:8px"></p>
-          <label for="phone">
-            <div id="inputusername" :style="{'display':'inline'}">电话</div>
+          <label for="repeatKey">
+            <div id="inputusername" :style="{'display':'inline'}">重复新密码</div>
           </label>
         </el-col>
-        <el-col :span="13">
-          <el-input id="phone" v-model="phone" clearable :style="{'width':'80%','float':'left'}"></el-input>
-        </el-col>
-      </el-row>
-      <p style="margin-top:30px"></p>
-      <el-row :gutter="21">
-        <el-col :span="4">&nbsp;</el-col>
-        <el-col :span="4">
-          <p style="margin-top:8px"></p>
-          <label for="address">
-            <div id="inputusername" :style="{'display':'inline'}">地址</div>
-          </label>
-        </el-col>
-        <el-col :span="13">
-          <el-input id="address" v-model="address" clearable :style="{'width':'80%','float':'left'}"></el-input>
-        </el-col>
-      </el-row>
-      <p style="margin-top:30px"></p>
-      <el-row :gutter="21">
-        <el-col :span="4">&nbsp;</el-col>
-        <el-col :span="4">
-          <p style="margin-top:8px"></p>
-          <label for="scale">
-            <div id="inputusername" :style="{'display':'inline'}">规模</div>
-          </label>
-        </el-col>
-        <el-col :span="13">
-          <el-input id="scale" v-model="scale" clearable :style="{'width':'80%','float':'left'}"></el-input>
-        </el-col>
-      </el-row>
-      <p style="margin-top:30px"></p>
-      <el-row :gutter="21">
-        <el-col :span="4">&nbsp;</el-col>
-        <el-col :span="4">
-          <p style="margin-top:8px"></p>
-          <label for="belisted">
-            <div id="inputusername" :style="{'display':'inline'}">是否上市</div>
-          </label>
-        </el-col>
-        <el-col :span="13">
-          <div id="belisted" class="regtitle3" :style="{'width':'70%','float':'left'}">
-          <el-radio v-model="belisted" label="是">是</el-radio>
-          <el-radio v-model="belisted" label="否">否</el-radio>
-          </div>
+        <el-col :span="12">
+          <el-input id="repeatKey" show-password v-model="repeatKey" clearable :style="{'width':'80%','float':'left'}"></el-input>
         </el-col>
       </el-row>
       <p style="margin-top:30px"></p>
@@ -99,12 +57,9 @@ export default {
   },
   data() {
     return {
-      uname: "",
-      cname: "",
-      phone: "",
-      address: "",
-      scale: "",
-      belisted: "",
+      oldKey: "",
+      newKey: "",
+      repeatKey: "",
       regback: {
         // backgroundImage: "url(" + require("@/assets/back1.jpg") + ")",
         backgroundRepeat: "no-repeat",
@@ -127,14 +82,14 @@ export default {
 </script>
 
 <style>
-.regback2 {
-  height: 900px;
+.regback {
+  height: 750px;
   width: 100%;
   text-align: center;
 }
 
-#register {
-  height: 70%;
+.register3 {
+  height: 50%;
   width: 50%;
   background-color: rgb(252, 247, 252);
   border-radius: 30px;

@@ -13,12 +13,16 @@
             <p>登录</p>
           </div>
           <div id="username">
-            <p>用户名</p>
-            <el-input type="text"></el-input>
+            <label>
+              <p>用户名</p>
+              <el-input clearable v-model="uname"></el-input>
+            </label>
           </div>
           <div id="password">
-            <p>密码</p>
-            <el-input type="text"></el-input>
+            <label>
+              <p>密码</p>
+              <el-input clearable show-password v-model="password"></el-input>
+            </label>
           </div>
           <div class="doubut">
             <el-button @click="bankl" class="bankl">登录</el-button>
@@ -31,129 +35,129 @@
 </template>
 
 <script>
-import TopNav from '@/views/nav/TopNavLogin'
+import TopNav from "@/views/nav/TopNavLogin";
 export default {
-  name: 'BankLogin',
-  components:{
+  name: "BankLogin",
+  components: {
     TopNav
   },
-  data(){
-    return{
-      blback:{
+  data() {
+    return {
+      uname: "",
+      password: "",
+      blback: {
         backgroundImage: "url(" + require("@/assets/bank.jpg") + ")",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100%",
-      },
-    }
+        backgroundSize: "100%"
+      }
+    };
   },
-  methods:{
-    bankl(){
+  methods: {
+    bankl() {
       // this.userInfo.uname="1"
       //   console.log(this.userInfo)
-      this.$store.state.leftNavState = 'Bank';
-      this.$router.push({path:'/bank'})
+      this.$store.state.leftNavState = "Bank";
+      this.$router.push({ path: "/bank" });
     },
-    register(){
-      this.$router.push({path:'/register'})
+    register() {
+      this.$router.push({ path: "/register" });
     }
   }
-}
+};
 </script>
 
 <style>
-.blback{
-  height:750px;
-  width:100%;
-  
+.blback {
+  height: 750px;
+  width: 100%;
 }
 
-#bltop{
-  height:13%;
-  width:100%;
+#bltop {
+  height: 13%;
+  width: 100%;
 }
 
-#blbody{
-  height:87%;
-  width:100%;
+#blbody {
+  height: 87%;
+  width: 100%;
   text-align: center;
 }
 
-#blbody1{
-  margin:auto;
-  height:12%;
-  width:46%;
-  font-family:"华文行楷"; 
-  font-size:30px;
+#blbody1 {
+  margin: auto;
+  height: 12%;
+  width: 46%;
+  font-family: "华文行楷";
+  font-size: 30px;
   text-align: center;
 }
 
-#blbody2{
-  margin:auto;
-  height:73%;
-  width:27%;
+#blbody2 {
+  margin: auto;
+  height: 73%;
+  width: 27%;
 }
 
-#login{
-  height:100%;
-  width:100%;
+#login {
+  height: 100%;
+  width: 100%;
   background-color: rgb(252, 247, 252);
-  border-radius:30px;
+  border-radius: 30px;
   box-shadow: 1px #383737;
   text-align: center;
 }
 
-#logintitle{
-  height:23%;
-  width:100%;
+#logintitle {
+  height: 23%;
+  width: 100%;
   text-align: center;
-  font-family:"华文行楷"; 
-  font-size:30px;
-  padding-top:2px;
+  font-family: "华文行楷";
+  font-size: 30px;
+  padding-top: 2px;
 }
 
-#username{
-  margin:auto;
-  height:18%;
-  width:62%;
+#username {
+  margin: auto;
+  height: 18%;
+  width: 62%;
   text-align: left;
-  font-family:"华文行楷"; 
-  font-size:20px;
+  font-family: "华文行楷";
+  font-size: 20px;
 }
 
-#password{
-  margin:auto;
-  height:18%;
-  width:62%;
+#password {
+  margin: auto;
+  height: 18%;
+  width: 62%;
   text-align: left;
-  font-family:"华文行楷"; 
-  font-size:20px;
+  font-family: "华文行楷";
+  font-size: 20px;
 }
 
-
-.doubut{
-  height:20%;
-  width:60%;
-  margin:auto;  
+.doubut {
+  height: 20%;
+  width: 60%;
+  margin: auto;
 }
-.bankl{
+.bankl {
   background-color: rgb(17, 212, 226);
-  width:100px;
-  height:45px;
+  width: 100px;
+  height: 45px;
   margin-top: 50px;
-  font-family:"华文行楷"; 
-  font-size:25px;
+  font-family: "华文行楷";
+  font-size: 25px;
   text-align: center;
-  float:left;
+  float: left;
 }
 
-.register{
+.register {
   background-color: rgb(17, 212, 226);
-  width:100px;
-  height:45px;
+  width: 100px;
+  height: 45px;
   margin-top: 50px;
-  font-family:"华文行楷"; 
-  font-size:25px;
+  font-family: "华文行楷";
+  font-size: 25px;
   text-align: center;
-  float:right;
+  float: right;
 }
 </style>

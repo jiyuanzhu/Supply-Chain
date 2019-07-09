@@ -13,12 +13,16 @@
             <p>登录</p>
           </div>
           <div id="username">
-            <p>用户名</p>
-            <el-input type="text"></el-input>
+            <label>
+              <p>用户名</p>
+              <el-input clearable v-model="uname"></el-input>
+            </label>
           </div>
           <div id="password">
-            <p>密码</p>
-            <el-input type="text"></el-input>
+            <label>
+              <p>密码</p>
+              <el-input clearable show-password v-model="password"></el-input>
+            </label>
           </div>
           <div class="doubut">
             <el-button @click="transl" class="transl">登录</el-button>
@@ -39,6 +43,8 @@ export default {
   },
   data(){
     return{
+      uname: "",
+      password: "",
       tlback:{
         backgroundImage: "url(" + require("@/assets/trans.jpg") + ")",
         backgroundRepeat: "no-repeat",

@@ -1,6 +1,6 @@
 <template>
-  <div class="regback2" :style="{regback,'padding-top':'50px'}">
-    <div id="register">
+  <div class="regback" :style="{regback,'padding-top':'50px'}">
+    <div id="register2">
       <div id="regtitle2">
         <p>账户信息</p>
       </div>
@@ -127,14 +127,14 @@ export default {
 </script>
 
 <style>
-.regback2 {
-  height: 900px;
+.regback {
+  height: 750px;
   width: 100%;
   text-align: center;
 }
 
-#register {
-  height: 70%;
+#register2 {
+  height: 85%;
   width: 50%;
   background-color: rgb(252, 247, 252);
   border-radius: 30px;
