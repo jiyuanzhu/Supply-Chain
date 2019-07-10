@@ -197,8 +197,9 @@ export default {
           company_name : this.company_name,
         }
       }).then(data =>{
-        console.log(this.company_name);
-        console.log(data);
+        console.log("合同列表")
+        // console.log(this.company_name);
+        // console.log(data);
         this.tableData = data;
         this.list=this.tableData
       })

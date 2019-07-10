@@ -23,10 +23,11 @@
         <!-- action="后端链接" -->
         <el-upload
           class="upload-demo"
-          action="https://jsonplaceholder.typicode.com/posts/"  
+          action="http://localhost:8088/enterprise/contract/signedA"  
           :before-remove="beforeRemove"
           multiple
           :limit="1"
+          :on-success="handleSuccess"
           :on-exceed="handleExceed"
           :file-list="fileList">
           <el-button type="primary" round>添加合同文本</el-button>
@@ -56,14 +57,14 @@ export default {
     };
   },
   methods: {
+    handleSuccess(response){
+      this.contractHash=response.data.info.partyAHash
+    },
     handleExceed(files, fileList) {
         this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
     },
     beforeRemove(file, fileList) {
         return this.$confirm(`确定移除 ${ file.name }？`);
-    },
-    addcontractTXT(){
-
     },
     setTime(dt){
         var y = dt.getFullYear();
@@ -97,7 +98,8 @@ export default {
           //合同文本待传
         }
       }).then((response) =>{
-        console.log(response);
+        console.log("签署合同")
+        // console.log(response);
         //设置contractHash
       } )
     },    

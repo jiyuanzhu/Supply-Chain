@@ -25,14 +25,20 @@ export default {
     };
   },
   methods: {
-    deliveryGoodsCertain(){},    
-        
-    init(){
-    }
+    deliveryGoodsCertain(){
+       this.$api({
+         url:"http://localhost:8088/trans/transport/send",
+         method:"post",
+         data:{
+           id: this.id,
+           log_state: "1"
+         }
+       }).then((response) =>{
+         console.log("发出货物")
+         //console.log(response);
+       })
+    },    
   },
-  mounted(){
-    {this.init()}
-  }
 };
 
 </script>

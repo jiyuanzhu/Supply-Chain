@@ -121,12 +121,11 @@ export default {
           item:this.goods,
           time:this.ctime,
           cost:this.tokenCost
-          //合同文本待传
         }
       }).then((response) =>{
-        console.log(response);
-        //设置contractHash
-      } )
+        console.log("物流订单确定")
+        // console.log(response);
+      })
     },
     init() {}
   },

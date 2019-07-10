@@ -34,7 +34,8 @@ export default {
           rece_state: "1"
         }
       }).then((response) =>{
-        console.log(response);
+        console.log("确认货物")
+        // console.log(response);
       } )
     },
         

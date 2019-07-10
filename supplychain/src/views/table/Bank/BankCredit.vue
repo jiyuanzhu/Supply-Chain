@@ -54,7 +54,7 @@
       <el-table-column prop="id" label="Id" width="50" align="center"></el-table-column>
       <el-table-column prop="name" label="企业名称"  align="center"></el-table-column>
       <el-table-column prop="time" label="授信时间" align="center"></el-table-column>
-      <el-table-column prop="limits" label="发放额度"align="center" ></el-table-column>
+      <el-table-column prop="limits" label="发放额度" align="center" ></el-table-column>
 
 
     </el-table>

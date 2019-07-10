@@ -16,6 +16,7 @@ Vue.config.productionTip = false
 
 Vue.prototype.userInfo = global_variable.userInfo
 Vue.prototype.loginPage = global_variable.loginPage
+Vue.prototype.comType = global_variable.comType
 Vue.prototype.$api = api
 /* eslint-disable no-new */
 new Vue({

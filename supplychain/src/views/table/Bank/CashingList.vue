@@ -169,21 +169,33 @@ export default {
   methods: {
     getList(){
       this.$api({
-        url:"http://localhost:8088//bank/token/exchange",
+        url:"http://localhost:8088/bank/token/exchange",
         method:"get",
       }).then(data =>{
-        console.log(data);
+        // console.log(data);
+        console.log("显示待兑现token表")
         this.tableData = data;
+        this.list=this.tableData;
       })
     },
     handleExchange(){
-      console.log("heil");
+      //无用
     },
     getIdClick(item,attribute){
         if(attribute.label=="操作"){
             this.idClick=item.id
             var index=this.list.findIndex(item =>{
               if(item.id==this.idClick) return true
+            })
+          this.$api({
+            url:"http://localhost:8088/bank/token/exchange",
+            method:"post",
+            data:{
+              id: this.list[index].id
+            }
+          }).then((response) =>{
+            console.log("成功兑现")
+            //console.log(response);
           })
           this.list.splice(index,1)
         }
@@ -195,34 +207,29 @@ export default {
         if (
           item.id.indexOf(idKey) != -1 &&
           item.name.indexOf(nameKey) != -1 &&
-          item.token.indexOf(tokenKey) != -1 &&
-          item.strtime.indexOf(strtimeKey) != -1
+          item.amount.indexOf(tokenKey) != -1 &&
+          item.time.indexOf(strtimeKey) != -1
         )
           this.tableData.push(item);
       });
     },
-    setTime(dt){
-        var y = dt.getFullYear();
-        var m = dt.getMonth();
-        var d = dt.getDate();
-        var hh = dt.getHours();
-        var mm = dt.getMinutes();
-        var ss = dt.getSeconds();
-        return y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
-    },
-    init() {
-      for (let index = 0; index < this.list.length; index++) {
-        const element = this.list[index];
-        this.list[index].strtime=this.setTime(this.list[index].ctime)
-      }
-      this.tableData = this.list;
-    }
+    // setTime(dt){
+    //     var y = dt.getFullYear();
+    //     var m = dt.getMonth();
+    //     var d = dt.getDate();
+    //     var hh = dt.getHours();
+    //     var mm = dt.getMinutes();
+    //     var ss = dt.getSeconds();
+    //     return y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
+    // },
+    // init() {
+    //   for (let index = 0; index < this.list.length; index++) {
+    //     const element = this.list[index];
+    //     this.list[index].strtime=this.setTime(this.list[index].ctime)
+    //   }
+    //   this.tableData = this.list;
+    // }
   },
-  mounted() {
-    {
-      // this.init();
-    }
-  }
 };
 </script>
 

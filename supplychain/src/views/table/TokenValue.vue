@@ -9,7 +9,7 @@
       <div :style="{'background':'white','padding-top':'70px','padding-bottom':'20px'}">
         <label>
           <div :style="{'display':'inline'}">查看方：</div>
-          <el-input v-model="partA" clearable :style="{'width':'20%'}"></el-input>
+          <el-input v-text="partA" clearable :style="{'width':'20%'}"></el-input>
         </label>
         <p style="margin-top:50px"></p>
         <label :style="{'display':'inline'}">
@@ -29,13 +29,26 @@ export default {
   data() {
     return {
           partA: "",
-          tokenValue: 0
+          tokenValue: null
     };
   },
   methods: {
     tokenValueCheck() {
+      this.$api({
+        url:"http://localhost:8088/enterpise/token/lines",
+        method:"get",
+        params: {
+          company_id : this.userInfo.id,
+        }
+      }).then(data =>{
+        this.tokenValue=data.companyToken
+        console.log("查看token额度")
+      })
     },
-    init() {}
+    init() {
+      this.partA=this.userInfo.cname
+      this.tokenValue=null
+    }
   },
   created() {
     {

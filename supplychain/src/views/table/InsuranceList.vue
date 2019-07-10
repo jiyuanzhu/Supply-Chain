@@ -56,10 +56,10 @@
     </div>
     <el-table :data="tableData" border height="520" :style="{'width':'100%'}"  @cell-click="detail">
       <el-table-column prop="id" label="保单编号" width="100" align="center"></el-table-column>
-      <el-table-column prop="partA" label="投保人" width="160" align="center"></el-table-column>
-      <el-table-column prop="partB" label="承保人" width="160" align="center"></el-table-column>
-      <el-table-column prop="strtime" label="创建时间" width="160" align="center"></el-table-column>
-      <el-table-column prop="tokenCost" label="保单费用" align="center"></el-table-column>
+      <el-table-column prop="insured" label="投保人" width="160" align="center"></el-table-column>
+      <el-table-column prop="insurer" label="承保人" width="160" align="center"></el-table-column>
+      <el-table-column prop="time" label="创建时间" width="160" align="center"></el-table-column>
+      <el-table-column prop="cost" label="保单费用" align="center"></el-table-column>
     </el-table>
   </div>
 </template>
@@ -173,49 +173,61 @@ export default {
       partB: "",
       ctime: "",
       tokenCost:"", //保单费用
-
       idKey: "",
       partAKey: "",
       partBKey: "",
       strtimeKey: "", //日期字符串
-      tokenCostKey: ""
+      tokenCostKey: "",
+      geturl:""
     };
   },
+  created(){
+    this.init()
+    this.getList()
+  },
   methods: {
+    init(){
+      switch (this.userInfo.ctype){
+        case this.comType.enterprise:
+          this.geturl="http://localhost:8088/enterpise/policy/list"
+          break;
+        case this.comType.transport:
+          this.geturl="http://localhost:8088/trans/policy/list"
+          break;
+        case this.comType.insurance:
+          this.geturl="http://localhost:8088/insurance/policy/list"
+          break;
+      }
+    },
+    getList(){
+      this.$api({
+        url:this.geturl,
+        method:"get",
+        params: {
+          company_name : this.userInfo.cname
+        }
+      }).then(data =>{
+        console.log("保单列表")
+        // console.log(this.company_name);
+        // console.log(data);
+        this.tableData = data;
+        this.list=this.tableData
+      })
+    },
     search(idKey, partAKey, partBKey, strtimeKey, tokenCostKey) {
       this.tableData = [];
       this.list.forEach(item => {
         if (
           item.id.indexOf(idKey) != -1 &&
-          item.partA.indexOf(partAKey) != -1 &&
-          item.partB.indexOf(partBKey) != -1 &&
-          item.strtime.indexOf(strtimeKey) != -1 &&
-          item.tokenCost.indexOf(tokenCostKey) != -1
+          item.insured.indexOf(partAKey) != -1 &&
+          item.insurer.indexOf(partBKey) != -1 &&
+          item.time.indexOf(strtimeKey) != -1 &&
+          item.cost.indexOf(tokenCostKey) != -1
         )
           this.tableData.push(item);
       });
     },
     detail(item) {},
-    init() {
-      for (let index = 0; index < this.list.length; index++) {
-        const element = this.list[index];
-        var dt = element.ctime;
-        var y = dt.getFullYear();
-        var m = dt.getMonth();
-        var d = dt.getDate();
-        var hh = dt.getHours();
-        var mm = dt.getMinutes();
-        var ss = dt.getSeconds();
-        this.list[index].strtime =
-          y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
-      }
-      this.tableData = this.list;
-    }
-  },
-  mounted() {
-    {
-      this.init();
-    }
   }
 };
 </script>
