@@ -35,7 +35,7 @@ export default {
   methods: {
     tokenValueCheck() {
       this.$api({
-        url:"http://localhost:8088/enterpise/token/lines",
+        url:"http://localhost:8088/token/lines",
         method:"get",
         params: {
           company_id : this.userInfo.id,

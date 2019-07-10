@@ -23,7 +23,7 @@
         <!-- action="后端链接" -->
         <el-upload
           class="upload-demo"
-          action="http://localhost:8088/enterprise/contract/signedA"  
+          action="http://localhost:8088/contract/uploadA"  
           :before-remove="beforeRemove"
           multiple
           :limit="1"
@@ -88,7 +88,7 @@ export default {
 
         this.ctime=this.setTime(new Date())
         this.$api({
-        url:"http://localhost:8088/enterprise/contract/signedA",
+        url:"http://localhost:8088/contract/signedA",
         method:"post",
         data:{
           name:this.name,

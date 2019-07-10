@@ -189,13 +189,13 @@ export default {
     init(){
       switch (this.userInfo.ctype){
         case this.comType.enterprise:
-          this.geturl="http://localhost:8088/enterpise/policy/list"
+          this.geturl="http://localhost:8088/policy/list"
           break;
         case this.comType.transport:
-          this.geturl="http://localhost:8088/trans/policy/list"
+          this.geturl="http://localhost:8088/policy/list"
           break;
         case this.comType.insurance:
-          this.geturl="http://localhost:8088/insurance/policy/list"
+          this.geturl="http://localhost:8088/policy/list"
           break;
       }
     },

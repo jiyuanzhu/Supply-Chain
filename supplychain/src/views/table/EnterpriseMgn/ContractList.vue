@@ -191,7 +191,7 @@ export default {
     getList(){
       this.company_name = this.userInfo.cname
       this.$api({
-        url:"http://localhost:8088/enterpise/contract/list",
+        url:"http://localhost:8088/contract/list",
         method:"get",
         params: {
           company_name : this.company_name,

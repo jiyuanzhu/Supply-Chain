@@ -27,7 +27,7 @@ export default {
   methods: {
     achieveSendingCertain(){
       this.$api({
-        url:"http://localhost:8088/trans/transport/done",
+        url:"http://localhost:8088/trans/update",
         method:"post",
         data:{
           id: this.id,

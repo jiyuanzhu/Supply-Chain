@@ -63,8 +63,18 @@
       <el-table-column prop="ctime" label="签署时间" align="center"></el-table-column>
       <el-table-column prop="partyAHash" label="甲方合同Hash值" align="center"></el-table-column>
       <el-table-column prop="partyBHash" label="乙方合同Hash值" align="center"></el-table-column>
-      <el-table-column label="乙方合同操作" align="center" >
-        <a href="" @click.prevent="">上传乙方合同</a>
+      <el-table-column label="乙方合同操作" align="center" width="160px" >
+        <el-upload
+          class="upload-demo"
+          action="http://localhost:8088/contract/uploadB"  
+          :before-remove="beforeRemove"
+          multiple
+          :limit="1"
+          :on-success="handleSuccess"
+          :on-exceed="handleExceed"
+          :file-list="fileList">
+          <el-button type="primary" size="mini" round>上传乙方合同</el-button>
+        </el-upload>
       </el-table-column>
       <el-table-column label="确认操作" align="center" >
         <a href="" @click.prevent="">确认签署</a>
@@ -81,6 +91,7 @@ export default {
   name: "App",
   data() {
     return {
+      fileList: [],
       list: [
         {
           id: "1",
@@ -192,63 +203,96 @@ export default {
       nameKey: "",
       partAKey: "",
       partBKey: "",
-      strtimeKey: ""
+      strtimeKey: "",
+      clickIndex: "",
+      partyBHash: "",
+      partyBHashList: [],
+      poststate: "",
+
     };
   },
   created() {
     this.getList()
   },
   methods: {
+    combinePartyBHash(){
+      for (let index = 0; index < partyBHashList.length; index++) {
+        const element = partyBHashList[index];
+        const idx=this.list.findIndex(item=>{
+          if(item.id==element.id) return true
+        })
+        this.list[idx].partyBHash=element.partyBHash
+      }
+      this.tableData=this.list
+    },
+    handleSuccess(response){
+      console.log("合同上传成功")
+      this.partyBHash=response.data.info.partyBHash
+      this.partyBHashList.push({id:this.list[this.clickIndex].id,partyBHash:this.partyBHash})
+      this.combinePartyBHash()
+    },
+    handleExceed(files, fileList) {
+        this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+    },
+    beforeRemove(file, fileList) {
+        return this.$confirm(`确定移除 ${ file.name }？`);
+    },
     getList(){
       this.$api({
-        url:"http://localhost:8088/enterpise/contract/signedB",
+        url:"http://localhost:8088/contract/unsignedList",
         method:"get",
         params: {
           company_name : this.userInfo.cname,
           state : "0"
         }
       }).then(data =>{
-        console.log(this.company_name);
-        console.log(data);
+        console.log("待签列表")
+        // console.log(this.company_name);
+        // console.log(data);
         this.tableData = data;
         this.list=this.tableData
+        this.combinePartyBHash()
       })
     },
     getIdClick(item,attribute){
-        if(attribute.label=="确认操作"){//且partyAHash===partyBHash
+        if(attribute.label=="确认操作" || attribute.label=="取消操作" ){
+          if(attribute.label=="确认操作")  this.poststate="1";
+           else this.poststate="2"
           this.idClick=item.id
           var index=this.list.findIndex(item =>{
             if(item.id==this.idClick) return true
           })
-          this.list.splice(index,1)
-          this.search(this.idKey,this.nameKey,this.partAKey,this.partBKey,this.strtimeKey)
-        } else
-        if(attribute.label=="取消操作" ){
-          this.idClick=item.id
-          var index=this.list.findIndex(item =>{
-            if(item.id==this.idClick) return true
-          })
-          
           this.$api({
-            url:"http://localhost:8088/enterpise/contract/signedB",
+            url:"http://localhost:8088/contract/signed",
             method:"post",
             data:{
               id:this.list[index].id,
-              
+              state: this.poststate
             }
           }).then((response) =>{
-            console.log(response);
-            
+            console.log("确认/取消合同")
+            // console.log(response);
+            this.getList()
           })
-
-          this.list.splice(index,1)
-          this.search(this.idKey,this.nameKey,this.partAKey,this.partBKey,this.strtimeKey)
         } else
         if(attribute.label=="乙方合同操作" ){
-
-        }
-        else{ //显示合约文本
-
+          this.poststate="0"
+          this.idClick=item.id
+          var index=this.list.findIndex(item =>{
+            if(item.id==this.idClick) return true
+          })
+          this.clickIndex=index;
+          this.$api({
+            url:"http://localhost:8088/contract/signed",
+            method:"post",
+            data:{
+              id:this.list[index].id,
+              state: this.poststate
+            }
+          }).then((response) =>{
+            console.log("点击上传合同")
+            // console.log(response);
+          })
         }
     },
     search(idKey, nameKey, partAKey, partBKey, strtimeKey) {
@@ -259,29 +303,10 @@ export default {
           item.name.indexOf(nameKey) != -1 &&
           item.partA.indexOf(partAKey) != -1 &&
           item.partB.indexOf(partBKey) != -1 &&
-          item.strtime.indexOf(strtimeKey) != -1
+          item.time.indexOf(strtimeKey) != -1
         )
           this.tableData.push(item);
       });
-    },
-    // 查看合同文件
-    detail(item) {
-
-    },
-    init() {
-      for (let index = 0; index < this.list.length; index++) {
-        const element = this.list[index];
-        var dt = element.ctime;
-        var y = dt.getFullYear();
-        var m = dt.getMonth();
-        var d = dt.getDate();
-        var hh = dt.getHours();
-        var mm = dt.getMinutes();
-        var ss = dt.getSeconds();
-        this.list[index].strtime =
-          y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
-      }
-      this.tableData = this.list;
     }
   },
 };

@@ -169,7 +169,7 @@ export default {
   methods: {
     getList(){
       this.$api({
-        url:"http://localhost:8088/bank/token/exchange",
+        url:"http://localhost:8088/token/exchangeList",
         method:"get",
       }).then(data =>{
         // console.log(data);
@@ -188,7 +188,7 @@ export default {
               if(item.id==this.idClick) return true
             })
           this.$api({
-            url:"http://localhost:8088/bank/token/exchange",
+            url:"http://localhost:8088/token/exchange",
             method:"post",
             data:{
               id: this.list[index].id

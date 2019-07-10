@@ -69,6 +69,23 @@ export default {
   },
   methods: {
     changeCertain() {
+      if(this.newKey!=this.repeatKey) alert("新旧两次密码不一致"); else
+      {
+        this.$api({
+          url:"http://localhost:8088/user/changePass",
+          method:"post",
+          data:{
+            username: this.userInfo.uname,
+            oldPass: this.oldKey,
+            newPass: this.newKey
+          }
+        }).then((response) =>{
+          console.log("修改密码")
+          // if(repsonse.data.code=="1001") alert("账户不存在"); else
+          // if(repsonse.data.code=="1002") alert("密码错误"); 
+          // console.log(response);
+        })
+      }
       // this.$router.replace('/')
     },
     init(){

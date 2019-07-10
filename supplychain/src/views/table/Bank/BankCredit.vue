@@ -27,7 +27,7 @@
           ></el-input>
         </label>
         <label :style="{'display':'inline'}">
-          <div :style="{'display':'inline'}">添加时间：</div>
+          <div :style="{'display':'inline'}">授信时间：</div>
           <el-input
             v-model="strtimeKey"
             clearable
@@ -46,11 +46,20 @@
             @keyup.enter.native="add"
           ></el-input>
         </label>
+        <label :style="{'display':'inline'}">
+          <div :style="{'display':'inline'}">发放额度：</div>
+          <el-input
+            v-model="limits"
+            clearable
+            :style="{'width':'20%'}"
+            @keyup.enter.native="add"
+          ></el-input>
+        </label>
         <div :style="{'display':'inline'}">&nbsp;&nbsp;&nbsp;</div>
         <el-button type="primary" round @click="add">确认授信</el-button>
       </div>
     </div>
-    <el-table :data="tableData" border height="520" style="width: 100%" @cell-click="getIdClick">
+    <el-table :data="tableData" border height="520" style="width: 100%">
       <el-table-column prop="id" label="Id" width="50" align="center"></el-table-column>
       <el-table-column prop="name" label="企业名称"  align="center"></el-table-column>
       <el-table-column prop="time" label="授信时间" align="center"></el-table-column>
@@ -149,7 +158,6 @@ export default {
       idKey: "",
       nameKey: "",
       strtimeKey: "",
-      idClick: ""
     };
   },
   created(){
@@ -158,43 +166,50 @@ export default {
   methods: {
     getList(){
       this.$api({
-        url:"http://localhost:8088/bank/creditManage/credit",
+        url:"http://localhost:8088/bank/creditList",
         method:"get",
       }).then(data =>{
-        console.log(data);
+        // console.log(data);
+        console.log("显示授信列表")
         this.tableData = data;
+        this.list=this.tableData;
       })
     },
-    getIdClick(item,attribute){
-        if(attribute.label=="操作"){
-            this.idClick=item.id
-            var index=this.list.findIndex(item =>{
-              if(item.id==this.idClick) return true
-          })
-          this.list.splice(index,1)
-        }
-        this.search(this.idKey,this.nameKey,this.strtimeKey)
-    },
     add(){
-      var randomid = false;
-      do {
-        this.id = Math.floor(Math.random() * (1000 - 1)) + 1;
-        this.id = this.id.toString()
-        randomid = this.list.every(item => {
-          if (item.id == this.id) return true;
-        });
-        if(this.list.length==0) randomid=false 
-      } while (randomid);
-      this.ctime = new Date();
-      this.strtime = this.setTime(this.ctime)
-      this.list.push({
-        id: this.id,
-        name: this.name,
-        ctime: this.ctime,
-        strtime: this.strtime
-      });
-      this.name=""
-      this.search(this.idKey,this.nameKey,this.strtimeKey)
+      // var randomid = false;
+      // do {
+      //   this.id = Math.floor(Math.random() * (1000 - 1)) + 1;
+      //   this.id = this.id.toString()
+      //   randomid = this.list.every(item => {
+      //     if (item.id == this.id) return true;
+      //   });
+      //   if(this.list.length==0) randomid=false 
+      // } while (randomid);
+      // this.ctime = new Date();
+      // this.strtime = this.setTime(this.ctime)
+      // this.list.push({
+      //   id: this.id,
+      //   name: this.name,
+      //   ctime: this.ctime,
+      //   strtime: this.strtime
+      // });
+      // this.name=""
+      this.ctime=this.setTime(new Date())
+      this.$api({
+        url:"http://localhost:8088/bank/addCredit",
+        method:"post",
+        data:{
+          company_name: this.name,
+          amount: this.limits,
+          time: this.ctime
+        }
+      }).then((response)=>{
+        console.log("授信")
+        this.name=""
+        this.limits=""
+        this.getList()
+        //console.log(response);
+      })
     },
     search(idKey, nameKey, strtimeKey) {
       this.tableData = [];

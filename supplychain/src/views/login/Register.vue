@@ -61,8 +61,22 @@ export default {
   },
   methods: {
     register_logon() {
-
-
+      this.$api({
+        url:"http://localhost:8088/user/register",
+        method:"post",
+        data:{
+          username: this.username,
+          password: this.password,
+          type: this.userInfo.ctype=this.loginPage.pageType.substring(0,1)
+        }
+      }).then((response) =>{
+        console.log("注册成功")
+        this.userInfo.uname=this.username
+        this.userInfo.id=response.data.info.id
+        this.userInfo.cname=response.data.info.company_name
+        // console.log(response);
+      })
+      console.log(this.userInfo.ctype)
       switch (this.loginPage.pageType) {
           case "bank":
               this.$store.state.leftNavState = "Bank";

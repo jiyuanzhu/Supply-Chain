@@ -9,7 +9,7 @@
       <div :style="{'background':'white','padding-top':'70px','padding-bottom':'20px'}">
         <label>
           <div :style="{'display':'inline'}">付款方：</div>
-          <el-input v-model="partA" clearable :style="{'width':'20%'}"></el-input>
+          <el-input v-text="partA" clearable :style="{'width':'20%'}"></el-input>
         </label>
         <p style="margin-top:50px"></p>
         <label :style="{'display':'inline'}">
@@ -38,16 +38,30 @@ export default {
           tokenCost: ""
     };
   },
-  methods: {
-    tokenPayCertain() {
-    },
-    init() {}
+  created(){
+    this.init()
   },
-  created() {
-    {
-      this.init();
-    }
-  }
+  methods: {
+    init(){
+      this.partA=this.userInfo.cname;
+    },
+    tokenPayCertain() {
+      this.$api({
+        url:"http://localhost:8088/token/pay",
+        method:"post",
+        data:{
+          companySubName: this.partA,
+          companyAddName: this.partB,
+          amount: this.tokenCost
+        }
+      }).then((response)=>{
+        console.log("token支付")
+        this.tokenCost=""
+        alert("支付成功")
+        //console.log(response);
+      })
+    },
+  },
 };
 </script>
 

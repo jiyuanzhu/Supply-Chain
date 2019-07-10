@@ -55,24 +55,44 @@ export default {
   },
   methods: {
     logon() {
+      this.$api({
+        url:"http://localhost:8088/user/login",
+        method:"post",
+        data:{
+          username: this.username,
+          password: this.password
+        }
+      }).then((response) =>{
+        console.log("登录成功")
+        this.userInfo.uname=this.username
+        this.userInfo.id=response.data.info.id
+        this.userInfo.cname=response.data.info.company_name
+        if(repsonse.data.code=="1001") alert("账户不存在"); else
+        if(repsonse.data.code=="1002") alert("密码错误"); 
+        // console.log(response);
+      } )
       // this.userInfo.uname="1"
       //   console.log(this.userInfo)
       switch (this.loginPage.pageType) {
           case "bank":
+              this.userInfo.ctype="b"
               this.$store.state.leftNavState = "Bank";
               this.$router.push({ path: "/bank" });
               break;
           case "enterprise":
               // this.$store.state.leftNavState = 'CoreEnterpise';
               // this.$router.push({path:'/centerpise'})
+              this.userInfo.ctype="e"
               this.$store.state.leftNavState = 'Enterpise'; //非核心企业
               this.$router.push({path:'/enterpise'})
               break;
           case "transport":
+              this.userInfo.ctype="t"
               this.$store.state.leftNavState = 'Trans';
               this.$router.push({path:'/trans'})
               break;
           case "insurance":
+              this.userInfo.ctype="i"
               this.$store.state.leftNavState = 'Insurance';
               this.$router.push({path:'/insurance'})
               break;

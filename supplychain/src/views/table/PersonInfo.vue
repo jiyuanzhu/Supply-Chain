@@ -79,8 +79,8 @@
         </el-col>
         <el-col :span="13">
           <div id="belisted" class="regtitle3" :style="{'width':'70%','float':'left'}">
-          <el-radio v-model="belisted" label="是">是</el-radio>
-          <el-radio v-model="belisted" label="否">否</el-radio>
+          <el-radio v-model="belisted" label="1">是</el-radio>
+          <el-radio v-model="belisted" label="0">否</el-radio>
           </div>
         </el-col>
       </el-row>
@@ -114,9 +114,38 @@ export default {
   },
   methods: {
     changeCertain() {
-      // this.$router.replace('/')
+      this.$api({
+          url:"http://localhost:8088/user/info",
+          method:"post",
+          data:{
+            id: this.userInfo.id,
+            name: this.userInfo.cname = this.name,
+            address: this.address,
+            telephone: this.phone,
+            size: this.scale,
+            list: this.belisted
+          }
+        }).then((response) =>{
+          console.log("修改个人信息")
+          // console.log(response);
+        })
     },
     init(){
+      this.$api({
+        url:"http://localhost:8088/user/info",
+        method:"get",
+        params:{
+          id: this.userInfo.id
+        }
+      }).then(data =>{
+        console.log("显示个人信息")
+        this.cname=data.info.name
+        this.address=data.info.address
+        this.phone=data.info.telephone
+        this.scale=data.info.size
+        this.belisted=data.info.list
+        // console.log(response);
+      })
       this.uname=this.userInfo.uname
     }
   },

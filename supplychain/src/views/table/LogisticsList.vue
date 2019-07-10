@@ -209,23 +209,36 @@ export default {
       partAKey: "",
       partBKey: "",
       strtimeKey: "", //日期字符串
-      orderStateKey: ""  //订单状态关键字搜索
+      orderStateKey: "",  //订单状态关键字搜索
+      geturl:""
     };
   },
   created() {
+    this.init()
     this.getList()
   },
   methods: {
+    init(){
+      switch (this.userInfo.ctype){
+        case this.comType.enterprise:
+          this.geturl="http://localhost:8088/trans/list"
+          break;
+        case this.comType.transport:
+          this.geturl="http://localhost:8088/trans/list"
+          break;
+      }
+    },
     getList(){
       this.$api({
-        url:"http://localhost:8088/enterpise/logistics/list",
+        url: this.geturl,
         method:"get",
         params: {
           company_name : this.userInfo.cname,
         }
       }).then(data =>{
-        console.log(this.company_name);
-        console.log(data);
+        console.log("物流信息表")
+        // console.log(this.company_name);
+        // console.log(data);
         this.tableData = data;
         this.list=this.tableData
       })

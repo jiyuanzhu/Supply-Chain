@@ -9,7 +9,7 @@
       <div :style="{'background':'white','padding-top':'70px','padding-bottom':'20px'}">
         <label>
           <div :style="{'display':'inline'}">兑现方：</div>
-          <el-input v-model="partA" clearable :style="{'width':'20%'}"></el-input>
+          <el-input v-text="partA" clearable :style="{'width':'20%'}"></el-input>
         </label>
         <p style="margin-top:50px"></p>
         <label :style="{'display':'inline'}">
@@ -32,16 +32,29 @@ export default {
           tokenCost: ""
     };
   },
-  methods: {
-    tokenExchangeCertain() {
-    },
-    init() {}
+  created(){
+    this.init()
   },
-  created() {
-    {
-      this.init();
-    }
-  }
+  methods: {
+    init(){
+      this.partA=this.userInfo.cname
+    },
+    tokenExchangeCertain() {
+      this.$api({
+        url:"http://localhost:8088/token/exchange",
+        method:"post",
+        data:{
+          companySubName: this.partA,
+          amount: this.tokenCost
+        }
+      }).then((response)=>{
+        console.log("token兑付")
+        this.tokenCost=""
+        alert("token兑现请求发送成功")
+        //console.log(response);
+      })
+    },
+  },
 };
 </script>
 

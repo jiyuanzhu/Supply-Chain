@@ -112,7 +112,7 @@ export default {
       // });
       this.ctime=this.setTime(new Date())
         this.$api({
-        url:"http://localhost:8088/enterpise/logistics/signed",
+        url:"http://localhost:8088/trans/add",
         method:"post",
         data:{
           company:this.name,
