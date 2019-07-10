@@ -230,7 +230,7 @@ export default {
     },
     getList(){
       this.$api({
-        url: this.geturl,
+        url: "http://localhost:8088/trans/list",
         method:"get",
         params: {
           company_name : this.userInfo.cname,
@@ -247,7 +247,7 @@ export default {
       this.tableData = [];
       this.list.forEach(item => {
         if (
-          item.id.indexOf(idKey) != -1 &&
+          item.id.toString().indexOf(idKey.toString()) != -1 &&
           item.company.indexOf(nameKey) != -1 &&
           item.sender.indexOf(partAKey) != -1 &&
           item.receiver.indexOf(partBKey) != -1 &&

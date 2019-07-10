@@ -62,10 +62,10 @@ export default {
     init(){
       switch (this.userInfo.ctype){
         case this.comType.enterprise:
-          this.posturl="http://localhost:8088/policy/buy"
+          this.posturl="http://localhost:8088/policy/update"
           break;
         case this.comType.transport:
-          this.posturl="http://localhost:8088/policy/buy"
+          this.posturl="http://localhost:8088/policy/update"
           break;
       }
     },
@@ -84,7 +84,7 @@ export default {
     addInsurance() {
       this.ctime=this.setTime(new Date())
       this.$api({
-        url:this.posturl,
+        url:"http://localhost:8088/policy/update",
         method:"post",
         data:{
           insured: this.partA,

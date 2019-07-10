@@ -31,7 +31,7 @@ export default {
         method:"post",
         data:{
           id:this.id,
-          rece_state: "1"
+          orderState: "2"
         }
       }).then((response) =>{
         console.log("确认货物")

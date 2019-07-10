@@ -31,7 +31,7 @@ export default {
          method:"post",
          data:{
            id: this.id,
-           log_state: "1"
+           orderState: "0"
          }
        }).then((response) =>{
          console.log("发出货物")

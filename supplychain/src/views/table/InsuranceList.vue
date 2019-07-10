@@ -182,31 +182,19 @@ export default {
     };
   },
   created(){
-    this.init()
+
     this.getList()
   },
   methods: {
-    init(){
-      switch (this.userInfo.ctype){
-        case this.comType.enterprise:
-          this.geturl="http://localhost:8088/policy/list"
-          break;
-        case this.comType.transport:
-          this.geturl="http://localhost:8088/policy/list"
-          break;
-        case this.comType.insurance:
-          this.geturl="http://localhost:8088/policy/list"
-          break;
-      }
-    },
     getList(){
       this.$api({
-        url:this.geturl,
+        url:"http://localhost:8088/policy/list",
         method:"get",
         params: {
-          company_name : this.userInfo.cname
+          name : this.userInfo.cname
         }
       }).then(data =>{
+        console.log(data)
         console.log("保单列表")
         // console.log(this.company_name);
         // console.log(data);
@@ -218,11 +206,11 @@ export default {
       this.tableData = [];
       this.list.forEach(item => {
         if (
-          item.id.indexOf(idKey) != -1 &&
+          item.id.toString().indexOf(idKey.toString()) != -1 &&
           item.insured.indexOf(partAKey) != -1 &&
           item.insurer.indexOf(partBKey) != -1 &&
           item.time.indexOf(strtimeKey) != -1 &&
-          item.cost.indexOf(tokenCostKey) != -1
+          item.cost.toString().indexOf(tokenCostKey.toString()) != -1
         )
           this.tableData.push(item);
       });

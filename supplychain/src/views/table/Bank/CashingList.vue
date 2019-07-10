@@ -169,7 +169,7 @@ export default {
   methods: {
     getList(){
       this.$api({
-        url:"http://localhost:8088/token/exchangeList",
+        url:"http://localhost:8088/bank/exchangeList",
         method:"get",
       }).then(data =>{
         // console.log(data);
@@ -205,9 +205,9 @@ export default {
       this.tableData = [];
       this.list.forEach(item => {
         if (
-          item.id.indexOf(idKey) != -1 &&
+          item.id.toString().indexOf(idKey.toString()) != -1 &&
           item.name.indexOf(nameKey) != -1 &&
-          item.amount.indexOf(tokenKey) != -1 &&
+          item.amount.toString().indexOf(tokenKey.toString()) != -1 &&
           item.time.indexOf(strtimeKey) != -1
         )
           this.tableData.push(item);

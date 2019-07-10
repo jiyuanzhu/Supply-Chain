@@ -2,6 +2,7 @@ import axios from 'axios'
 import {Message, MessageBox} from 'element-ui'
 
 const service = axios.create({
+
   timeout: 15000               // 请求超时时间2
 })
 

@@ -34,11 +34,12 @@ export default {
   },
   methods: {
     tokenValueCheck() {
+      console.log(this.userInfo.id)
       this.$api({
         url:"http://localhost:8088/token/lines",
         method:"get",
         params: {
-          company_id : this.userInfo.id,
+          id : this.userInfo.id,
         }
       }).then(data =>{
         this.tokenValue=data.companyToken

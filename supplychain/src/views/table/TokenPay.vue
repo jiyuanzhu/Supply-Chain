@@ -46,6 +46,9 @@ export default {
       this.partA=this.userInfo.cname;
     },
     tokenPayCertain() {
+      console.log(this.partA)
+      console.log(this.partB)
+      console.log(this.tokenCost)
       this.$api({
         url:"http://localhost:8088/token/pay",
         method:"post",

@@ -216,18 +216,27 @@ export default {
   },
   methods: {
     combinePartyBHash(){
-      for (let index = 0; index < partyBHashList.length; index++) {
-        const element = partyBHashList[index];
+      console.log("here")
+      for (let index = 0; index < this.partyBHashList.length; index++) {
+        const element = this.partyBHashList[index];
         const idx=this.list.findIndex(item=>{
           if(item.id==element.id) return true
         })
         this.list[idx].partyBHash=element.partyBHash
+
+        console.log(this.list)
+        console.log(element.partyBHash)
+
       }
+
       this.tableData=this.list
+      this.tableData.push({})
+      this.tableData.splice(this.tableData.length-1,1)
     },
     handleSuccess(response){
       console.log("合同上传成功")
-      this.partyBHash=response.data.info.partyBHash
+      console.log(response.info.partyBHash)
+      this.partyBHash=response.info.partyBHash
       this.partyBHashList.push({id:this.list[this.clickIndex].id,partyBHash:this.partyBHash})
       this.combinePartyBHash()
     },
@@ -246,7 +255,10 @@ export default {
           state : "0"
         }
       }).then(data =>{
+        console.log(this.userInfo.cname)
+
         console.log("待签列表")
+        console.log(data)
         // console.log(this.company_name);
         // console.log(data);
         this.tableData = data;
@@ -299,7 +311,7 @@ export default {
       this.tableData = [];
       this.list.forEach(item => {
         if (
-          item.id.indexOf(idKey) != -1 &&
+          item.id.toString().indexOf(idKey.toString()) != -1 &&
           item.name.indexOf(nameKey) != -1 &&
           item.partA.indexOf(partAKey) != -1 &&
           item.partB.indexOf(partBKey) != -1 &&

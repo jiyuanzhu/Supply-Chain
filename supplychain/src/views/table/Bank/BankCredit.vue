@@ -200,7 +200,7 @@ export default {
         method:"post",
         data:{
           company_name: this.name,
-          amount: this.limits,
+          limits: this.limits,
           time: this.ctime
         }
       }).then((response)=>{
@@ -215,9 +215,9 @@ export default {
       this.tableData = [];
       this.list.forEach(item => {
         if (
-          item.id.indexOf(idKey) != -1 &&
+          item.id.toString().indexOf(idKey.toString()) != -1 &&
           item.name.indexOf(nameKey) != -1 &&
-          item.strtime.indexOf(strtimeKey) != -1
+          item.time.indexOf(strtimeKey) != -1
         )
           this.tableData.push(item);
       });

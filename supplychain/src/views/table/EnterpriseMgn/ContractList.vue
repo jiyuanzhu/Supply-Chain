@@ -208,11 +208,16 @@ export default {
       this.tableData = [];
       this.list.forEach(item => {
         if (
-          item.id.indexOf(idKey) != -1 &&
+          item.id.toString().indexOf(idKey.toString()) != -1 &&
           item.name.indexOf(nameKey) != -1 &&
           item.partyA.indexOf(partAKey) != -1 &&
           item.partyB.indexOf(partBKey) != -1 &&
           item.ctime.indexOf(strtimeKey) != -1
+          // item.id.toString().indexOf(idKey.toString()) != -1 &&
+          // item.name.toString().indexOf(nameKey.toString()) != -1 &&
+          // item.partyA.toString().indexOf(partAKey.toString()) != -1 &&
+          // item.partyB.toString().indexOf(partBKey.toString()) != -1 &&
+          // item.ctime.toString().indexOf(strtimeKey.toString()) != -1
         )
           this.tableData.push(item);
       });

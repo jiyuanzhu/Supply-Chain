@@ -34,7 +34,7 @@
         <p style="margin-top:40px"></p>
         <el-upload
           class="upload-demo"
-          action="https://jsonplaceholder.typicode.com/posts/"  
+          action="http://localhost:8088/trans/upload"
           :before-remove="beforeRemove"
           multiple
           :limit="1"
@@ -116,12 +116,13 @@ export default {
         method:"post",
         data:{
           company:this.name,
-          sender:this.partyA,
-          receiver:this.partyB,
+          sender:this.partA,
+          receiver:this.partB,
           item:this.goods,
           time:this.ctime,
           cost:this.tokenCost
-        }
+        },
+          emulateJson:true
       }).then((response) =>{
         console.log("物流订单确定")
         // console.log(response);

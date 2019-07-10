@@ -7,6 +7,7 @@ import store from './store.js'
 import global_variable from './global_variable.js'
 
 
+
 import {default as api} from './util/api.js'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
