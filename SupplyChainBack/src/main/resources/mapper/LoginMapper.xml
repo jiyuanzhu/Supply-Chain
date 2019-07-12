@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.djj.mywe3sdk.dao.LoginDao">
+
+    <select id="getUser" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            u.id        userId,
+            u.type      userType,
+            u.username  username,
+            u.password  password
+        FROM
+            user_list u
+        WHERE
+            u.username = #{username}
+
+    </select>
+
+    <insert id="addUser" useGeneratedKeys="true">
+        INSERT INTO user_list
+        (type,username,password) VALUES
+            (#{type}, #{username}, #{password})
+    </insert>
+
+    <select id="getId" parameterType="com.alibaba.fastjson.JSONObject" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            u.id    id
+        FROM
+            user_list u
+        WHERE
+            u.username = #{username}
+    </select>
+
+    <select id="getName" parameterType="com.alibaba.fastjson.JSONObject" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            u.name    company_name
+        FROM
+            user_info_list u
+        WHERE
+            u.user_id = #{id}
+    </select>
+</mapper>

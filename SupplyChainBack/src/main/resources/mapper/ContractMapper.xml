@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.djj.mywe3sdk.dao.ContractDao">
+    <select id="listContract" resultType="com.alibaba.fastjson.JSONObject">
+            SELECT
+                w.contract_id    id,
+                w.name          name,
+                w.partyA        partyA,
+                w.partyB        partyB,
+                w.upload_time   ctime
+            FROM
+                contract_list w
+            WHERE
+                w.partyA = #{company_name} or w.partyB = #{company_name}
+    </select>
+
+    <insert id="addContract" parameterType="com.alibaba.fastjson.JSONObject">
+        INSERT INTO contract_list
+        (name,partyA,partyB,upload_time,doc_url,md5,state)
+        VALUES
+        (#{name},#{partyA},#{partyB},#{time},#{url},#{md5},#{state})
+    </insert>
+
+    <update id="signedContract" parameterType="com.alibaba.fastjson.JSONObject">
+            UPDATE contract_list u
+            SET u.state = #{state}
+            WHERE u.contract_id = #{id}
+    </update>
+
+    <select id="listUnsignedContract" resultType="com.alibaba.fastjson.JSONObject">
+            SELECT
+                w.contract_id    id,
+                w.name          name,
+                w.partyA        partyA,
+                w.partyB        partyB,
+                w.upload_time   ctime,
+                w.md5           partyAHash
+            FROM
+                contract_list w
+            WHERE
+                w.partyB = #{company_name} and w.state = "0"
+    </select>
+</mapper>

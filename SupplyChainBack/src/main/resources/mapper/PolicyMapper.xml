@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.djj.mywe3sdk.dao.PolicyDao">
+    <select id="listPolicy" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            p.policy_id     id,
+            p.insured       insured,
+            p.insurer       insurer,
+            p.upload_time   time,
+            p.cost          cost
+        FROM
+            policy_list p
+        WHERE
+            p.insured = #{name} or p.insurer = #{name}
+    </select>
+    
+    <insert id="addPolicy" parameterType="com.alibaba.fastjson.JSONObject">
+        INSERT INTO
+            policy_list(insured,insurer,cost,doc_url,upload_time,hash)
+            VALUES
+            (#{insured},#{insurer},#{cost},#{url},#{time},#{md5})
+    </insert>
+
+</mapper>

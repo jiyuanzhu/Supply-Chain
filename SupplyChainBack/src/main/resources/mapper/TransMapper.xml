@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.djj.mywe3sdk.dao.TransDao">
+
+    <select id="listTrans" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            w.trans_id      id,
+            w.log_company   company,
+            w.sender        sender,
+            w.receiver      receiver,
+            w.time          time,
+            w.order_state   orderState,
+            w.item          item,
+            w.cost          cost
+        FROM
+            trans_list w
+        WHERE
+            w.log_company = #{company_name} or w.sender = #{company_name} or w.receiver = #{company_name}
+    </select>
+
+    <select id="addTrans" parameterType="com.alibaba.fastjson.JSONObject">
+        INSERT INTO trans_list
+        (log_company,sender,receiver,item,time,cost,order_state,url,md5)
+        VALUES (#{company},#{sender},#{receiver},#{item},#{time},#{cost},#{state},#{url},#{md5})
+    </select>
+
+    <update id="changeState" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE trans_list w
+        SET w.order_state = #{orderState}
+        WHERE w.trans_id = #{id}
+    </update>
+
+
+
+</mapper>

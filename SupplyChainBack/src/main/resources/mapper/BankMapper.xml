@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.djj.mywe3sdk.dao.BankDao">
+    <insert id="addLine" parameterType="com.alibaba.fastjson.JSONObject">
+        INSERT INTO
+            credit_list
+            (name,credit_time,limits)
+        VALUES
+        (#{company_name},#{time},#{limits})
+    </insert>
+
+    <select id="listCredit" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            c.id    id,
+            c.name  name,
+            c.limits    limits,
+            c.credit_time   time
+        FROM
+            credit_list c
+    </select>
+
+    <select id="listExchange" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            c.exchange_id    id,
+            c.converter  name,
+            c.amount    amount,
+            c.time   time
+        FROM
+            exchange_list c
+    </select>
+
+    <delete id="deleteLine" parameterType="com.alibaba.fastjson.JSONObject">
+        DELETE FROM exchange_list
+        WHERE exchange_list.exchange_id = #{id}
+    </delete>
+
+    <update id="updateType" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE user_list u
+        SET u.type = "c"
+        WHERE u.id = #{id}
+    </update>
+
+    <update id="tokenByCredit" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE company_list c
+        SET c.token = c.token + #{amount}
+        WHERE c.company_id = #{id}
+    </update>
+
+    <insert id="addCompany" parameterType="com.alibaba.fastjson.JSONObject">
+        INSERT INTO
+            company_list(name,token)
+            VALUES (#{company_name},#{limits})
+    </insert>
+
+    <select id="getId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            c.company_id id
+            FROM
+            company_list c
+            WHERE
+            c.name = #{company_name}
+    </select>
+</mapper>

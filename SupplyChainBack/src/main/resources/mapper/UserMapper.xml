@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.djj.mywe3sdk.dao.UserDao">
+
+    <update id="changePass" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE user_list
+        SET password = #{newPass}
+        WHERE username = #{username}
+    </update>
+
+    <select id="infoGet" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            u.name  name,
+            u.address  address,
+            u.telephone telephone,
+            u.size      size,
+            u.if_list   list
+        FROM
+            user_info_list u
+        WHERE
+            u.user_id = #{id}
+    </select>
+
+    <update id="infoChange" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE
+            user_info_list u
+        SET
+            u.name = #{name},
+            u.address = #{address},
+            u.telephone = #{telephone},
+            u.size = #{size},
+            u.if_list = #{list}
+        WHERE
+            u.user_id = #{id}
+    </update>
+
+    <select id="getPass" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            u.password  password
+        FROM
+            user_list u
+        WHERE
+            u.username = #{username}
+    </select>
+
+    <select id="existId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            u.username   username
+            FROM
+            user_list u
+            WHERE
+            u.id = #{id}
+    </select>
+</mapper>

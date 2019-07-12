@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.djj.mywe3sdk.dao.TokenDao">
+
+    <update id="tokenAdd">
+        UPDATE
+            company_list
+        SET
+            token = token + #{amount}
+        WHERE
+            name = #{companyAddName}
+    </update>
+
+    <update id="tokenSub">
+        UPDATE
+            company_list
+        SET
+            token = token - #{amount}
+        WHERE
+            name = #{companySubName}
+    </update>
+
+    <select id="tokenGet" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            c.token  companyToken
+        FROM
+            company_list c
+        WHERE
+            c.name = #{company_name}
+    </select>
+    <select id="tokenGetById" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+            c.token  companyToken
+        FROM
+            company_list c
+        WHERE
+            c.company_id = #{id}
+    </select>
+<!--    <select id="tokenPayGet">-->
+<!--        SELECT-->
+<!--            c.token  companyToken-->
+<!--        FROM-->
+<!--            company_list c-->
+<!--        WHERE-->
+<!--            c.company_id = #{companyPayId}-->
+<!--    </select>-->
+
+<!--    <select id="tokenSubGet">-->
+<!--        SELECT-->
+<!--            c.token  companyToken-->
+<!--        FROM-->
+<!--            company_list c-->
+<!--        WHERE-->
+<!--            c.company_id = #{companySubId}-->
+<!--    </select>-->
+
+    <insert id="tokenUnpay" parameterType="com.alibaba.fastjson.JSONObject">
+        INSERT INTO exchange_list
+        (converter,amount,time)
+        VALUES (#{companySubName},#{amount},#{time})
+    </insert>
+
+</mapper>
